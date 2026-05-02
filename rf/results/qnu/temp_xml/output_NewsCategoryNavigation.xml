@@ -1,0 +1,4059 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2026-05-01T16:35:34.958306" rpa="false" schemaversion="5">
+<suite id="s1" name="NewsCategoryNavigation" source="E:\n8nRobot\automation\rf\tests\GenericEngine.robot">
+<test id="s1-t1" name="Navigate_To_Thong_Bao_Noi_Bat" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:35.894200" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-01T16:35:35.893912" elapsed="1.727027"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.621281" elapsed="0.089170"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.710781" elapsed="0.001520"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:35.893116" elapsed="1.819379"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:37.715220" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.714799" elapsed="0.000495"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:37.715917" level="INFO">${a1} = xpath://span[text()='Thông báo nổi bật']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.715558" elapsed="0.000419"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:37.716502" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.716198" elapsed="0.000351"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.717105" elapsed="0.001517"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.720334" elapsed="0.000716"/>
+</kw>
+<msg time="2026-05-01T16:35:37.721394" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.720051" elapsed="0.001573"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:37.722397" elapsed="0.000055"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:37.721953" elapsed="0.000758"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:37.721880" elapsed="0.000926"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:37.723467" level="INFO">${final_arg1} = xpath://span[text()='Thông báo nổi bật']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.722968" elapsed="0.000562"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:37.724239" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.723939" elapsed="0.000349"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:37.724695" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.724478" elapsed="0.000262"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.725194" elapsed="0.000251"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:37.724871" elapsed="0.000657"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:37.724839" elapsed="0.000763"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.726047" elapsed="0.000766"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:37.725701" elapsed="0.002956"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:37.725673" elapsed="0.003361"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.730271" elapsed="0.321330"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:37.729637" elapsed="0.322166"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.052410" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.052098" elapsed="0.000416"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:37.729297" elapsed="0.323305"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.053146" elapsed="0.000090"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.053418" elapsed="0.000050"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.053633" elapsed="0.000048"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.052834" elapsed="0.000931"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:37.729200" elapsed="0.324664"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:37.719207" elapsed="0.334766"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:37.716717" elapsed="0.337343"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:37.716667" elapsed="0.337457"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-01T16:35:37.714575" elapsed="0.339590"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.055031" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.054683" elapsed="0.000395"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.055644" level="INFO">${a1} = xpath://span[text()='Thông báo nổi bật']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.055286" elapsed="0.000426"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.056290" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.055923" elapsed="0.000423"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.056867" elapsed="0.000891"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.060351" elapsed="0.000300"/>
+</kw>
+<msg time="2026-05-01T16:35:38.060828" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.060094" elapsed="0.000790"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.061332" elapsed="0.000062"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.061038" elapsed="0.000466"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.061004" elapsed="0.000581"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.062047" level="INFO">${final_arg1} = xpath://span[text()='Thông báo nổi bật']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.061743" elapsed="0.000366"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.062573" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.062299" elapsed="0.000330"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.063080" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.062831" elapsed="0.000304"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.063617" elapsed="0.000395"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.063281" elapsed="0.000831"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.063249" elapsed="0.000938"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.064602" elapsed="0.000056"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.064291" elapsed="0.000453"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.064255" elapsed="0.000560"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:38.065809" level="INFO">Clicking element 'xpath://span[text()='Thông báo nổi bật']'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.065481" elapsed="0.125215"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.065118" elapsed="0.125757"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.191456" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.191147" elapsed="0.000397"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.064951" elapsed="0.126684"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.191955" elapsed="0.000068"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.192214" elapsed="0.000062"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.192446" elapsed="0.000057"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.191749" elapsed="0.000825"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.064895" elapsed="0.127763"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:38.059426" elapsed="0.133323"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.056506" elapsed="0.136331"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.056470" elapsed="0.136434"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-01T16:35:38.054495" elapsed="0.138450"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.193791" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.193410" elapsed="0.000435"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.194406" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.194062" elapsed="0.000396"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.195007" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.194667" elapsed="0.000397"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.195547" elapsed="0.000652"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.197685" elapsed="0.000291"/>
+</kw>
+<msg time="2026-05-01T16:35:38.198228" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.197406" elapsed="0.000878"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.198733" elapsed="0.000056"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.198435" elapsed="0.000442"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.198402" elapsed="0.000548"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.199397" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.199098" elapsed="0.000354"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.199935" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.199652" elapsed="0.000340"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.200467" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.200210" elapsed="0.000310"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.201004" elapsed="0.000262"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.200660" elapsed="0.000696"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.200629" elapsed="0.000803"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.201830" elapsed="0.000281"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.201526" elapsed="0.000675"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.201496" elapsed="0.000769"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.202876" elapsed="0.037295"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.202536" elapsed="0.037814"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.241069" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.240678" elapsed="0.000525"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.202377" elapsed="0.038951"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.241730" elapsed="0.000079"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.242068" elapsed="0.000077"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.242271" elapsed="0.000039"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.241480" elapsed="0.000887"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.202329" elapsed="0.040104"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:38.196751" elapsed="0.045757"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.195217" elapsed="0.047356"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.195183" elapsed="0.047445"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-01T16:35:38.193234" elapsed="0.049430"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.243449" level="INFO">${k} = Element Text Should Be</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.243077" elapsed="0.000425"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.243998" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.243690" elapsed="0.000354"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.245056" level="INFO">${a2} = Thông báo nổi bật</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.244505" elapsed="0.000633"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.245896" elapsed="0.001522"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.249121" elapsed="0.000273"/>
+</kw>
+<msg time="2026-05-01T16:35:38.249558" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.248871" elapsed="0.000737"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.250080" elapsed="0.000054"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.249788" elapsed="0.000425"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.249755" elapsed="0.000531"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.250717" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.250446" elapsed="0.000326"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.251211" level="INFO">${final_arg2} = Thông báo nổi bật</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.250949" elapsed="0.000315"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.251707" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.251478" elapsed="0.000282"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.252211" elapsed="0.000500"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.251901" elapsed="0.000924"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.251866" elapsed="0.001042"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.253427" elapsed="0.000319"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.253056" elapsed="0.000796"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.253014" elapsed="0.000915"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:38.255162" level="INFO">Verifying element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' contains exact text 'Thông báo nổi bật'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.254655" elapsed="0.036119"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.254278" elapsed="0.036655"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.291438" level="INFO">PASS: Element Text Should Be</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.291160" elapsed="0.000366"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.254085" elapsed="0.037523"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.291893" elapsed="0.000056"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.292266" elapsed="0.000083"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.292541" elapsed="0.000055"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.291711" elapsed="0.000956"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.254017" elapsed="0.038733"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:38.248193" elapsed="0.044653"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.245372" elapsed="0.047569"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.245310" elapsed="0.047697"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-01T16:35:38.242919" elapsed="0.050133"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.293845" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.293484" elapsed="0.000418"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.294450" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.294121" elapsed="0.000380"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.294997" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.294689" elapsed="0.000359"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.295513" elapsed="0.000055"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-01T16:35:38.296073" elapsed="0.000075"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.295193" elapsed="0.001033"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.295162" elapsed="0.001129"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-01T16:35:38.293317" elapsed="0.003013"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.297076" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.296717" elapsed="0.000412"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.297658" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.297320" elapsed="0.000390"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:38.298222" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.297890" elapsed="0.000386"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:38.298724" elapsed="0.000050"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-01T16:35:38.299217" elapsed="0.000067"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:38.298428" elapsed="0.000936"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:38.298395" elapsed="0.001035"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-01T16:35:38.296555" elapsed="0.002916"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="PASS" start="2026-05-01T16:35:37.714098" elapsed="0.585458"/>
+</for>
+<arg>Step1_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step1_Arg1=xpath://span[text()='Thông báo nổi bật']</arg>
+<arg>Step1_Arg2=10s</arg>
+<arg>Step2_Keyword=Click Element</arg>
+<arg>Step2_Arg1=xpath://span[text()='Thông báo nổi bật']</arg>
+<arg>Step2_Arg2=</arg>
+<arg>Step3_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step3_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step3_Arg2=10s</arg>
+<arg>Step4_Keyword=Element Text Should Be</arg>
+<arg>Step4_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step4_Arg2=Thông báo nổi bật</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="PASS" start="2026-05-01T16:35:37.713232" elapsed="0.586478"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-01T16:35:38.301233" elapsed="2.266515"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:38.300771" elapsed="2.267509"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:35.891644" elapsed="4.679063"/>
+</test>
+<test id="s1-t2" name="Navigate_To_Cac_Quy_Dinh" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:40.575671" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-01T16:35:40.575276" elapsed="1.765009"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.340626" elapsed="0.097513"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.438409" elapsed="0.001366"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:40.574751" elapsed="1.865165"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.441981" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.441677" elapsed="0.000351"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.442439" level="INFO">${a1} = xpath://span[text()='Các quy định']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.442187" elapsed="0.000296"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.442907" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.442634" elapsed="0.000321"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.443372" elapsed="0.000468"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.445297" elapsed="0.000273"/>
+</kw>
+<msg time="2026-05-01T16:35:42.445730" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.445081" elapsed="0.000696"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.446182" elapsed="0.000048"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.445918" elapsed="0.000386"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.445886" elapsed="0.000483"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.446731" level="INFO">${final_arg1} = xpath://span[text()='Các quy định']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.446493" elapsed="0.000288"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.447171" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.446940" elapsed="0.000276"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.447592" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.447377" elapsed="0.000264"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.448036" elapsed="0.001125"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.447762" elapsed="0.001511"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.447734" elapsed="0.001606"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.449731" elapsed="0.000258"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.449439" elapsed="0.002231"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.449408" elapsed="0.002505"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.452704" elapsed="0.282153"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.452314" elapsed="0.282813"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.735961" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.735502" elapsed="0.000596"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.452106" elapsed="0.284128"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.736707" elapsed="0.000081"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.737048" elapsed="0.000073"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.737341" elapsed="0.000066"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.736414" elapsed="0.001093"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.452038" elapsed="0.285586"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:42.444433" elapsed="0.293331"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.443095" elapsed="0.294838"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.443064" elapsed="0.294977"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-01T16:35:42.441525" elapsed="0.296579"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.739272" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.738740" elapsed="0.000661"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.740210" level="INFO">${a1} = xpath://span[text()='Các quy định']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.739685" elapsed="0.000612"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.741084" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.740605" elapsed="0.000556"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.741879" elapsed="0.000812"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.744842" elapsed="0.000405"/>
+</kw>
+<msg time="2026-05-01T16:35:42.745524" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.744463" elapsed="0.001140"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.746301" elapsed="0.000090"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.745832" elapsed="0.000686"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.745782" elapsed="0.000844"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.747271" level="INFO">${final_arg1} = xpath://span[text()='Các quy định']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.746849" elapsed="0.000504"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.747954" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.747607" elapsed="0.000418"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.748604" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.748299" elapsed="0.000373"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.749315" elapsed="0.000354"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.748857" elapsed="0.000941"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.748815" elapsed="0.001077"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.750496" elapsed="0.000075"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.750023" elapsed="0.000658"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.749984" elapsed="0.000784"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:42.751992" level="INFO">Clicking element 'xpath://span[text()='Các quy định']'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.751487" elapsed="0.125954"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.751111" elapsed="0.126567"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.878382" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.878002" elapsed="0.000538"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.750915" elapsed="0.127743"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.879070" elapsed="0.000077"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.879380" elapsed="0.000070"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.879665" elapsed="0.000067"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.878805" elapsed="0.001027"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.750854" elapsed="0.129092"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:42.743483" elapsed="0.136586"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.741372" elapsed="0.138815"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.741321" elapsed="0.138966"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-01T16:35:42.738499" elapsed="0.141849"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.881502" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.880997" elapsed="0.000578"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.882292" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.881844" elapsed="0.000517"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.883078" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.882645" elapsed="0.000500"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.883728" elapsed="0.000674"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.886394" elapsed="0.000373"/>
+</kw>
+<msg time="2026-05-01T16:35:42.887031" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.886003" elapsed="0.001096"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.887689" elapsed="0.000072"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.887292" elapsed="0.000580"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.887249" elapsed="0.000720"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.888544" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.888187" elapsed="0.000429"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.889189" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.888858" elapsed="0.000399"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.889792" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.889501" elapsed="0.000359"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.890536" elapsed="0.000357"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.890087" elapsed="0.000928"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.890014" elapsed="0.001094"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.891638" elapsed="0.000350"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.891247" elapsed="0.000886"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.891207" elapsed="0.001021"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.893011" elapsed="0.039153"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.892595" elapsed="0.039806"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.933128" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.932739" elapsed="0.000552"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.892382" elapsed="0.041026"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.933812" elapsed="0.000073"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.934100" elapsed="0.000065"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.934362" elapsed="0.000271"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.933555" elapsed="0.001244"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.892317" elapsed="0.042642"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:42.885168" elapsed="0.049968"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.883329" elapsed="0.051955"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.883286" elapsed="0.052233"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-01T16:35:42.880756" elapsed="0.054857"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.937050" level="INFO">${k} = Element Text Should Be</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.936400" elapsed="0.000730"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.937838" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.937406" elapsed="0.000501"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.938573" level="INFO">${a2} = Các quy định</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.938159" elapsed="0.000518"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.939349" elapsed="0.000820"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.942319" elapsed="0.000366"/>
+</kw>
+<msg time="2026-05-01T16:35:42.942905" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.941996" elapsed="0.000975"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.943554" elapsed="0.000069"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.943170" elapsed="0.000564"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.943122" elapsed="0.000736"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.944410" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.944050" elapsed="0.000428"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.945039" level="INFO">${final_arg2} = Các quy định</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.944719" elapsed="0.000388"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.945677" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.945396" elapsed="0.000346"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.946340" elapsed="0.000342"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.945950" elapsed="0.000850"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.945906" elapsed="0.000990"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.947387" elapsed="0.000335"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.947024" elapsed="0.000844"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.946987" elapsed="0.000972"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:42.949139" level="INFO">Verifying element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' contains exact text 'Các quy định'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.948720" elapsed="0.047593"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.948310" elapsed="0.048220"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:42.997201" level="INFO">PASS: Element Text Should Be</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.996835" elapsed="0.000479"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.948108" elapsed="0.049348"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.997850" elapsed="0.000069"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.998157" elapsed="0.000082"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:42.998486" elapsed="0.000078"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:42.997600" elapsed="0.001091"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.948048" elapsed="0.050791"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:42.941028" elapsed="0.057985"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:42.938891" elapsed="0.060274"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:42.938841" elapsed="0.060443"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-01T16:35:42.936031" elapsed="0.063340"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:43.000466" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:42.999993" elapsed="0.000542"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:43.001445" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:43.000890" elapsed="0.000632"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:43.003233" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:43.001797" elapsed="0.001591"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:43.004144" elapsed="0.000072"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-01T16:35:43.004673" elapsed="0.000045"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:43.003637" elapsed="0.001143"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:43.003583" elapsed="0.001253"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-01T16:35:42.999781" elapsed="0.005097"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:43.005748" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:43.005226" elapsed="0.000594"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:43.006528" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:43.006079" elapsed="0.000516"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:43.007296" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:43.006846" elapsed="0.000551"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:43.008029" elapsed="0.000071"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-01T16:35:43.008735" elapsed="0.000077"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:43.007597" elapsed="0.001331"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:43.007552" elapsed="0.001471"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-01T16:35:43.005087" elapsed="0.004001"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="PASS" start="2026-05-01T16:35:42.441204" elapsed="0.568007"/>
+</for>
+<arg>Step1_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step1_Arg1=xpath://span[text()='Các quy định']</arg>
+<arg>Step1_Arg2=10s</arg>
+<arg>Step2_Keyword=Click Element</arg>
+<arg>Step2_Arg1=xpath://span[text()='Các quy định']</arg>
+<arg>Step2_Arg2=</arg>
+<arg>Step3_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step3_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step3_Arg2=10s</arg>
+<arg>Step4_Keyword=Element Text Should Be</arg>
+<arg>Step4_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step4_Arg2=Các quy định</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="PASS" start="2026-05-01T16:35:42.440498" elapsed="0.568941"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-01T16:35:43.011315" elapsed="2.188183"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:43.010645" elapsed="2.189267"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:40.572366" elapsed="4.628692"/>
+</test>
+<test id="s1-t3" name="Navigate_To_Thong_Bao_Hoc_Phi" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:45.205998" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-01T16:35:45.205617" elapsed="1.721801"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-01T16:35:46.927620" elapsed="0.099702"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.027601" elapsed="0.001292"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:45.205089" elapsed="1.823934"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.031057" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.030760" elapsed="0.000344"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.031538" level="INFO">${a1} = xpath://span[text()='Thông báo học phí']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.031271" elapsed="0.000315"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.032024" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.031760" elapsed="0.000305"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.032490" elapsed="0.000484"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.034319" elapsed="0.000249"/>
+</kw>
+<msg time="2026-05-01T16:35:47.034740" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.034089" elapsed="0.000698"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.035188" elapsed="0.000049"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.034927" elapsed="0.000379"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.034895" elapsed="0.000474"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.035735" level="INFO">${final_arg1} = xpath://span[text()='Thông báo học phí']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.035501" elapsed="0.000280"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.036131" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.035932" elapsed="0.000238"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.036501" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.036319" elapsed="0.000227"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.037774" elapsed="0.000579"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.037023" elapsed="0.001438"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.036978" elapsed="0.001554"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.038927" elapsed="0.000286"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.038634" elapsed="0.000657"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.038604" elapsed="0.000746"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.039916" elapsed="0.258412"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.039588" elapsed="0.258985"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.299318" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.298918" elapsed="0.000530"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.039453" elapsed="0.260123"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.300031" elapsed="0.000162"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.300388" elapsed="0.000092"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.300727" elapsed="0.000077"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.299757" elapsed="0.001164"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.039409" elapsed="0.261636"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:47.033538" elapsed="0.267641"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.032199" elapsed="0.269105"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.032166" elapsed="0.269245"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-01T16:35:47.030597" elapsed="0.270882"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.303824" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.303121" elapsed="0.000805"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.305144" level="INFO">${a1} = xpath://span[text()='Thông báo học phí']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.304339" elapsed="0.000916"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.306184" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.305599" elapsed="0.000668"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.306949" elapsed="0.000796"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.309704" elapsed="0.000382"/>
+</kw>
+<msg time="2026-05-01T16:35:47.310354" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.309388" elapsed="0.001049"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.311216" elapsed="0.000094"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.310716" elapsed="0.000727"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.310620" elapsed="0.000920"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.312171" level="INFO">${final_arg1} = xpath://span[text()='Thông báo học phí']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.311745" elapsed="0.000501"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.312913" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.312453" elapsed="0.000550"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.313536" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.313252" elapsed="0.000343"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.314088" elapsed="0.000314"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.313752" elapsed="0.000753"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.313715" elapsed="0.000898"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.315025" elapsed="0.000055"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.314726" elapsed="0.000441"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.314692" elapsed="0.000543"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:47.316850" level="INFO">Clicking element 'xpath://span[text()='Thông báo học phí']'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.315956" elapsed="0.122959"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.315507" elapsed="0.123566"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.439547" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.439290" elapsed="0.000332"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.315353" elapsed="0.124343"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.439955" elapsed="0.000048"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.440154" elapsed="0.000068"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.440363" elapsed="0.000042"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.439788" elapsed="0.000678"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.315305" elapsed="0.125229"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:47.308588" elapsed="0.132026"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.306502" elapsed="0.134188"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.306446" elapsed="0.134299"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-01T16:35:47.302740" elapsed="0.138044"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.441497" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.441162" elapsed="0.000386"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.442036" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.441729" elapsed="0.000355"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.442598" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.442287" elapsed="0.000362"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.443094" elapsed="0.000592"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.445092" elapsed="0.000286"/>
+</kw>
+<msg time="2026-05-01T16:35:47.445539" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.444830" elapsed="0.000756"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.445999" elapsed="0.000049"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.445728" elapsed="0.000397"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.445693" elapsed="0.000494"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.446563" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.446320" elapsed="0.000291"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.447010" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.446778" elapsed="0.000280"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.447455" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.447228" elapsed="0.000274"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.447906" elapsed="0.000241"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.447631" elapsed="0.000599"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.447598" elapsed="0.000692"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.448635" elapsed="0.000231"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.448380" elapsed="0.000564"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.448354" elapsed="0.000649"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.449558" elapsed="0.027897"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.449242" elapsed="0.028443"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.478267" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.477946" elapsed="0.000419"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.449106" elapsed="0.029379"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.478794" elapsed="0.000059"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.479024" elapsed="0.000050"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.479234" elapsed="0.000050"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.478601" elapsed="0.000754"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.449065" elapsed="0.030373"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:47.444238" elapsed="0.035288"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.442788" elapsed="0.036822"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.442755" elapsed="0.036921"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-01T16:35:47.441021" elapsed="0.038699"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.480501" level="INFO">${k} = Element Text Should Be</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.480133" elapsed="0.000423"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.481053" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.480748" elapsed="0.000353"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.481570" level="INFO">${a2} = Thông báo học phí</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.481272" elapsed="0.000349"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.482054" elapsed="0.000505"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.483825" elapsed="0.000236"/>
+</kw>
+<msg time="2026-05-01T16:35:47.484197" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.483630" elapsed="0.000631"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.485380" elapsed="0.000232"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:47.484413" elapsed="0.001374"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.484371" elapsed="0.001556"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.486759" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.486219" elapsed="0.000634"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.487719" level="INFO">${final_arg2} = Thông báo học phí</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.487177" elapsed="0.000634"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.488484" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.488118" elapsed="0.000446"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.489119" elapsed="0.000301"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.488745" elapsed="0.000759"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.488701" elapsed="0.000868"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.490118" elapsed="0.000422"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.489669" elapsed="0.001014"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:47.489640" elapsed="0.001149"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:47.492243" level="INFO">Verifying element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' contains exact text 'Thông báo học phí'.</msg>
+<msg time="2026-05-01T16:35:47.517086" level="FAIL">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo học phí' but it was 'Thông báo chung'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="FAIL" start="2026-05-01T16:35:47.491755" elapsed="0.031352">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo học phí' but it was 'Thông báo chung'.</status>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="FAIL" start="2026-05-01T16:35:47.491221" elapsed="0.032196">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo học phí' but it was 'Thông báo chung'.</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:47.523807" elapsed="0.000106"/>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:47.490978" elapsed="0.033124">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo học phí' but it was 'Thông báo chung'.</status>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:47.763318" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Navigate_To_Thong_Bao_Hoc_Phi_failed_at_Element%20Text%20Should%20Be.png"&gt;&lt;img src="Navigate_To_Thong_Bao_Hoc_Phi_failed_at_Element%20Text%20Should%20Be.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.524653" elapsed="0.238838"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.766380" level="INFO">FAIL: Element Text Should Be - Error: The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo học phí' but it was 'Thông báo chung'.</msg>
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.763947" elapsed="0.002575"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-05-01T16:35:47.767193" level="FAIL">Step failed: Element Text Should Be</msg>
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-05-01T16:35:47.766781" elapsed="0.000562">Step failed: Element Text Should Be</status>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:47.524363" elapsed="0.243112">Step failed: Element Text Should Be</status>
+</branch>
+<status status="FAIL" start="2026-05-01T16:35:47.490898" elapsed="0.276687">Step failed: Element Text Should Be</status>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="FAIL" start="2026-05-01T16:35:47.483068" elapsed="0.284694">Step failed: Element Text Should Be</status>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:47.481756" elapsed="0.286149">Step failed: Element Text Should Be</status>
+</branch>
+<status status="FAIL" start="2026-05-01T16:35:47.481724" elapsed="0.287067">Step failed: Element Text Should Be</status>
+</if>
+<var name="${i}">4</var>
+<status status="FAIL" start="2026-05-01T16:35:47.479980" elapsed="0.289032">Step failed: Element Text Should Be</status>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="FAIL" start="2026-05-01T16:35:47.030277" elapsed="0.739018">Step failed: Element Text Should Be</status>
+</for>
+<arg>Step1_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step1_Arg1=xpath://span[text()='Thông báo học phí']</arg>
+<arg>Step1_Arg2=10s</arg>
+<arg>Step2_Keyword=Click Element</arg>
+<arg>Step2_Arg1=xpath://span[text()='Thông báo học phí']</arg>
+<arg>Step2_Arg2=</arg>
+<arg>Step3_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step3_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step3_Arg2=10s</arg>
+<arg>Step4_Keyword=Element Text Should Be</arg>
+<arg>Step4_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step4_Arg2=Thông báo học phí</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="FAIL" start="2026-05-01T16:35:47.029548" elapsed="0.740600">Step failed: Element Text Should Be</status>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-01T16:35:47.776616" elapsed="2.139801"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:47.775892" elapsed="2.140679"/>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:45.202982" elapsed="4.714029">Step failed: Element Text Should Be</status>
+</test>
+<test id="s1-t4" name="Navigate_Back_To_Thong_Bao_Chung" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:49.920003" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-01T16:35:49.919700" elapsed="1.651505"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.571472" elapsed="0.094237"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.665942" elapsed="0.001277"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:49.919250" elapsed="1.748115"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.669880" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.669477" elapsed="0.000549"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.670553" level="INFO">${a1} = xpath:(//a[contains(@aria-label,'Thông báo chung')])</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.670251" elapsed="0.000347"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.671040" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.670775" elapsed="0.000310"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.671519" elapsed="0.000630"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.673283" elapsed="0.000290"/>
+</kw>
+<msg time="2026-05-01T16:35:51.673752" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.673100" elapsed="0.000694"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:51.674465" elapsed="0.000079"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:51.674044" elapsed="0.000615"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.673990" elapsed="0.000769"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.675341" level="INFO">${final_arg1} = xpath:(//a[contains(@aria-label,'Thông báo chung')])</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.674961" elapsed="0.000457"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.676077" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.675679" elapsed="0.000470"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.676712" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.676408" elapsed="0.000373"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.677444" elapsed="0.001240"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.676964" elapsed="0.001830"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.676919" elapsed="0.001944"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.679271" elapsed="0.000270"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.678969" elapsed="0.000645"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.678938" elapsed="0.000730"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.680187" elapsed="0.274553"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.679898" elapsed="0.275083"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.955774" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.955327" elapsed="0.000575"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.679765" elapsed="0.276258"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:51.956409" elapsed="0.000070"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:51.956689" elapsed="0.000062"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:51.956943" elapsed="0.000059"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:51.956170" elapsed="0.000920"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.679725" elapsed="0.277482"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:51.672605" elapsed="0.284713"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.671223" elapsed="0.286196"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.671187" elapsed="0.286314"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-01T16:35:51.669296" elapsed="0.288262"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.959806" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.959120" elapsed="0.000794"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.961152" level="INFO">${a1} = xpath:(//a[contains(@aria-label,'Thông báo chung')])</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.960291" elapsed="0.000961"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.962161" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.961627" elapsed="0.000612"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.962909" elapsed="0.000641"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.965478" elapsed="0.000344"/>
+</kw>
+<msg time="2026-05-01T16:35:51.966064" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.965164" elapsed="0.000962"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:51.966665" elapsed="0.000066"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:51.966307" elapsed="0.000520"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.966263" elapsed="0.000643"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.967406" level="INFO">${final_arg1} = xpath:(//a[contains(@aria-label,'Thông báo chung')])</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.967072" elapsed="0.000399"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.968062" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.967686" elapsed="0.000470"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:51.968814" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.968456" elapsed="0.000438"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.971102" elapsed="0.001114"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.969317" elapsed="0.003029"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.969077" elapsed="0.003351"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:51.972937" elapsed="0.000065"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:51.972547" elapsed="0.000558"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.972511" elapsed="0.000705"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:51.975047" level="INFO">Clicking element 'xpath:(//a[contains(@aria-label,'Thông báo chung')])'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.974556" elapsed="0.105475"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:51.973630" elapsed="0.106638"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.080984" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.080604" elapsed="0.000532"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.973433" elapsed="0.107823"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.081628" elapsed="0.000050"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.081828" elapsed="0.000043"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.082004" elapsed="0.000046"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:52.081408" elapsed="0.000704"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.973341" elapsed="0.108847"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:51.964296" elapsed="0.117976"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:51.962454" elapsed="0.119892"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:51.962403" elapsed="0.120004"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-01T16:35:51.958218" elapsed="0.124231"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.083328" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.082840" elapsed="0.000547"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.084313" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.083682" elapsed="0.000697"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.084927" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.084592" elapsed="0.000385"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.086487" elapsed="0.000594"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.088845" elapsed="0.000232"/>
+</kw>
+<msg time="2026-05-01T16:35:52.089225" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.088619" elapsed="0.000652"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.089678" elapsed="0.000051"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:52.089401" elapsed="0.000400"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.089371" elapsed="0.000489"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.090255" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.089993" elapsed="0.000312"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.090727" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.090488" elapsed="0.000312"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.091237" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.091022" elapsed="0.000260"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.091688" elapsed="0.000239"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.091405" elapsed="0.000602"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.091375" elapsed="0.000698"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.092428" elapsed="0.000248"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.092160" elapsed="0.000623"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.092135" elapsed="0.000715"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.093418" elapsed="0.024707"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.093111" elapsed="0.025211"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.120255" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.119190" elapsed="0.001187"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.092957" elapsed="0.027523"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.120851" elapsed="0.000060"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.121288" elapsed="0.000074"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.121542" elapsed="0.000055"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:52.120609" elapsed="0.001064"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.092911" elapsed="0.028848"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:52.087939" elapsed="0.033944"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.085763" elapsed="0.036214"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.085702" elapsed="0.036346"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-01T16:35:52.082695" elapsed="0.039398"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.122931" level="INFO">${k} = Element Text Should Be</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.122549" elapsed="0.000440"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.123510" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.123184" elapsed="0.000377"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.124195" level="INFO">${a2} = Thông báo chung</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.123746" elapsed="0.000508"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.124756" elapsed="0.000501"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.126658" elapsed="0.000254"/>
+</kw>
+<msg time="2026-05-01T16:35:52.127090" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.126423" elapsed="0.000714"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.127579" elapsed="0.000050"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:52.127278" elapsed="0.000425"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.127246" elapsed="0.000518"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.128161" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.127898" elapsed="0.000313"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.128629" level="INFO">${final_arg2} = Thông báo chung</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.128387" elapsed="0.000293"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.129290" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.128867" elapsed="0.000495"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.129866" elapsed="0.000287"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.129522" elapsed="0.000726"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.129485" elapsed="0.000838"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.130702" elapsed="0.000264"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.130421" elapsed="0.000635"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:52.130394" elapsed="0.000727"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:52.132098" level="INFO">Verifying element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' contains exact text 'Thông báo chung'.</msg>
+<msg time="2026-05-01T16:35:52.165496" level="FAIL">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="FAIL" start="2026-05-01T16:35:52.131712" elapsed="0.035093">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</status>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="FAIL" start="2026-05-01T16:35:52.131390" elapsed="0.035547">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:52.167138" elapsed="0.000053"/>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:52.131231" elapsed="0.036062">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</status>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:52.426297" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Navigate_Back_To_Thong_Bao_Chung_failed_at_Element%20Text%20Should%20Be.png"&gt;&lt;img src="Navigate_Back_To_Thong_Bao_Chung_failed_at_Element%20Text%20Should%20Be.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.167730" elapsed="0.258758"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.427126" level="INFO">FAIL: Element Text Should Be - Error: The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</msg>
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.426785" elapsed="0.000444"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-05-01T16:35:52.428030" level="FAIL">Step failed: Element Text Should Be</msg>
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-05-01T16:35:52.427532" elapsed="0.000804">Step failed: Element Text Should Be</status>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:52.167477" elapsed="0.261060">Step failed: Element Text Should Be</status>
+</branch>
+<status status="FAIL" start="2026-05-01T16:35:52.131185" elapsed="0.297480">Step failed: Element Text Should Be</status>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="FAIL" start="2026-05-01T16:35:52.125811" elapsed="0.303264">Step failed: Element Text Should Be</status>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:52.124410" elapsed="0.304920">Step failed: Element Text Should Be</status>
+</branch>
+<status status="FAIL" start="2026-05-01T16:35:52.124375" elapsed="0.305067">Step failed: Element Text Should Be</status>
+</if>
+<var name="${i}">4</var>
+<status status="FAIL" start="2026-05-01T16:35:52.122378" elapsed="0.307324">Step failed: Element Text Should Be</status>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="FAIL" start="2026-05-01T16:35:51.668818" elapsed="0.761059">Step failed: Element Text Should Be</status>
+</for>
+<arg>Step1_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step1_Arg1=xpath:(//a[contains(@aria-label,'Thông báo chung')])</arg>
+<arg>Step1_Arg2=10s</arg>
+<arg>Step2_Keyword=Click Element</arg>
+<arg>Step2_Arg1=xpath:(//a[contains(@aria-label,'Thông báo chung')])</arg>
+<arg>Step2_Arg2=</arg>
+<arg>Step3_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step3_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step3_Arg2=10s</arg>
+<arg>Step4_Keyword=Element Text Should Be</arg>
+<arg>Step4_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step4_Arg2=Thông báo chung</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="FAIL" start="2026-05-01T16:35:51.667976" elapsed="0.762120">Step failed: Element Text Should Be</status>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-01T16:35:52.431808" elapsed="2.134625"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:52.431254" elapsed="2.135372"/>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:49.918215" elapsed="4.648755">Step failed: Element Text Should Be</status>
+</test>
+<test id="s1-t5" name="Verify_Default_Category_Is_Thong_Bao_Chung" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:54.570543" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-01T16:35:54.570269" elapsed="1.862401"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.432936" elapsed="0.091628"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.524848" elapsed="0.001379"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:54.569859" elapsed="1.956501"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.529345" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.528817" elapsed="0.000617"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.530371" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.529764" elapsed="0.000665"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.530888" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.530615" elapsed="0.000313"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.531834" elapsed="0.000495"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.534019" elapsed="0.000234"/>
+</kw>
+<msg time="2026-05-01T16:35:56.534431" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.533812" elapsed="0.001618"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:56.536266" elapsed="0.000093"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:56.535732" elapsed="0.000759"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.535670" elapsed="0.000930"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.537264" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.536834" elapsed="0.000511"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.538035" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.537652" elapsed="0.000463"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.538729" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.538398" elapsed="0.000408"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.539457" elapsed="0.000411"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:56.539014" elapsed="0.000990"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.538967" elapsed="0.001142"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.540686" elapsed="0.000414"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:56.540260" elapsed="0.000986"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.540217" elapsed="0.001140"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.545146" elapsed="0.254229"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.544407" elapsed="0.255119"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.799984" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.799739" elapsed="0.000318"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:56.542911" elapsed="0.257222"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:56.800398" elapsed="0.000052"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:56.800594" elapsed="0.000521"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:56.801478" elapsed="0.000089"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:56.800235" elapsed="0.001467"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.541468" elapsed="0.260352"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:35:56.532806" elapsed="0.269139"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:56.531495" elapsed="0.270546"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.531404" elapsed="0.270716"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-01T16:35:56.528547" elapsed="0.273625"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.803143" level="INFO">${k} = Element Text Should Be</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.802770" elapsed="0.000419"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.803643" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.803355" elapsed="0.000332"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.804124" level="INFO">${a2} = Thông báo chung</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.803842" elapsed="0.000331"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.805431" elapsed="0.000637"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.807452" elapsed="0.000280"/>
+</kw>
+<msg time="2026-05-01T16:35:56.807894" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.807225" elapsed="0.000737"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:56.808678" elapsed="0.000053"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:35:56.808368" elapsed="0.000444"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.808328" elapsed="0.000548"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.809390" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.809092" elapsed="0.000347"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.810043" level="INFO">${final_arg2} = Thông báo chung</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.809732" elapsed="0.000365"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:35:56.810519" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.810306" elapsed="0.000258"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.810949" elapsed="0.000228"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:56.810684" elapsed="0.000570"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.810656" elapsed="0.000659"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.811644" elapsed="0.000233"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:56.811396" elapsed="0.000581"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:35:56.811372" elapsed="0.000673"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:56.813353" level="INFO">Verifying element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' contains exact text 'Thông báo chung'.</msg>
+<msg time="2026-05-01T16:35:56.841038" level="FAIL">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="FAIL" start="2026-05-01T16:35:56.813044" elapsed="0.029191">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</status>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="FAIL" start="2026-05-01T16:35:56.812527" elapsed="0.029878">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:35:56.842637" elapsed="0.000063"/>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:56.812148" elapsed="0.030657">The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</status>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:57.063590" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Verify_Default_Category_Is_Thong_Bao_Chung_failed_at_Element%20Text%20Should%20Be.png"&gt;&lt;img src="Verify_Default_Category_Is_Thong_Bao_Chung_failed_at_Element%20Text%20Should%20Be.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-05-01T16:35:56.843147" elapsed="0.220909"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:35:57.064662" level="INFO">FAIL: Element Text Should Be - Error: The text of element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' should have been 'Thông báo chung' but it was 'Thông báo chung'.</msg>
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:35:57.064340" elapsed="0.000409"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<msg time="2026-05-01T16:35:57.065231" level="FAIL">Step failed: Element Text Should Be</msg>
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="FAIL" start="2026-05-01T16:35:57.064924" elapsed="0.000417">Step failed: Element Text Should Be</status>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:56.842969" elapsed="0.222491">Step failed: Element Text Should Be</status>
+</branch>
+<status status="FAIL" start="2026-05-01T16:35:56.812106" elapsed="0.253473">Step failed: Element Text Should Be</status>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="FAIL" start="2026-05-01T16:35:56.806625" elapsed="0.259098">Step failed: Element Text Should Be</status>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:56.804306" elapsed="0.261536">Step failed: Element Text Should Be</status>
+</branch>
+<status status="FAIL" start="2026-05-01T16:35:56.804275" elapsed="0.261645">Step failed: Element Text Should Be</status>
+</if>
+<var name="${i}">2</var>
+<status status="FAIL" start="2026-05-01T16:35:56.802586" elapsed="0.263410">Step failed: Element Text Should Be</status>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="FAIL" start="2026-05-01T16:35:56.527972" elapsed="0.538133">Step failed: Element Text Should Be</status>
+</for>
+<arg>Step1_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step1_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step1_Arg2=10s</arg>
+<arg>Step2_Keyword=Element Text Should Be</arg>
+<arg>Step2_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step2_Arg2=Thông báo chung</arg>
+<arg>Step3_Keyword=</arg>
+<arg>Step3_Arg1=</arg>
+<arg>Step3_Arg2=</arg>
+<arg>Step4_Keyword=</arg>
+<arg>Step4_Arg1=</arg>
+<arg>Step4_Arg2=</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="FAIL" start="2026-05-01T16:35:56.526902" elapsed="0.539369">Step failed: Element Text Should Be</status>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-01T16:35:57.068623" elapsed="2.180464"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:57.067946" elapsed="2.181267"/>
+</kw>
+<status status="FAIL" start="2026-05-01T16:35:54.567700" elapsed="4.681890">Step failed: Element Text Should Be</status>
+</test>
+<test id="s1-t6" name="Logic_Switch_Categories_Sequentially" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:35:59.251657" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-01T16:35:59.251463" elapsed="1.724774"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-01T16:36:00.976529" elapsed="0.103011"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.079771" elapsed="0.001515"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:59.251187" elapsed="1.830326"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.084681" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.084168" elapsed="0.000608"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.085585" level="INFO">${a1} = xpath://span[text()='Thông báo nổi bật']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.085099" elapsed="0.000566"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.086455" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.085993" elapsed="0.000536"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.087212" elapsed="0.000724"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.090447" elapsed="0.000448"/>
+</kw>
+<msg time="2026-05-01T16:36:01.091710" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.089958" elapsed="0.001872"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.093886" elapsed="0.000062"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.092013" elapsed="0.002022"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.091973" elapsed="0.002148"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.094829" level="INFO">${final_arg1} = xpath://span[text()='Thông báo nổi bật']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.094360" elapsed="0.000567"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.098927" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.095229" elapsed="0.003832"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.099857" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.099432" elapsed="0.000514"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.101009" elapsed="0.000457"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.100189" elapsed="0.001428"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.100129" elapsed="0.001602"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.102685" elapsed="0.000094"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.101894" elapsed="0.001025"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.101846" elapsed="0.001194"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:36:01.104665" level="INFO">Clicking element 'xpath://span[text()='Thông báo nổi bật']'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.104043" elapsed="0.333930"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.103499" elapsed="0.334649"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.438675" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.438372" elapsed="0.000396"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.103239" elapsed="0.335610"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.439134" elapsed="0.000055"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.439369" elapsed="0.000053"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.439577" elapsed="0.000050"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.438952" elapsed="0.000745"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.103154" elapsed="0.336622"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:36:01.088386" elapsed="0.351485"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.086778" elapsed="0.353175"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.086728" elapsed="0.353291"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-01T16:36:01.083885" elapsed="0.356198"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.440838" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.440513" elapsed="0.000372"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.441328" level="INFO">${a1} = xpath://span[text()='Các quy định']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.441046" elapsed="0.000330"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.441803" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.441537" elapsed="0.000307"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.442257" elapsed="0.000483"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.444204" elapsed="0.000290"/>
+</kw>
+<msg time="2026-05-01T16:36:01.444657" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.443961" elapsed="0.000745"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.445170" elapsed="0.000054"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.444877" elapsed="0.000425"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.444843" elapsed="0.000525"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.445756" level="INFO">${final_arg1} = xpath://span[text()='Các quy định']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.445502" elapsed="0.000305"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.446209" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.445976" elapsed="0.000279"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.446694" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.446463" elapsed="0.000280"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.447154" elapsed="0.000252"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.446879" elapsed="0.000615"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.446845" elapsed="0.000717"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.447930" elapsed="0.000049"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.447655" elapsed="0.000401"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.447628" elapsed="0.000490"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:36:01.448995" level="INFO">Clicking element 'xpath://span[text()='Các quy định']'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.448693" elapsed="0.106816"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.448392" elapsed="0.107288"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.556170" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.555901" elapsed="0.000344"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.448225" elapsed="0.108096"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.556581" elapsed="0.000051"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.556803" elapsed="0.000047"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.556989" elapsed="0.000040"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.556413" elapsed="0.000676"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.448180" elapsed="0.108981"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:36:01.443323" elapsed="0.113930"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.441971" elapsed="0.115359"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.441941" elapsed="0.115451"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-01T16:36:01.440344" elapsed="0.117090"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.558151" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.557831" elapsed="0.000365"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.558653" level="INFO">${a1} = xpath://span[text()='Thông báo học phí']</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.558361" elapsed="0.000342"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.559201" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.558898" elapsed="0.000350"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.559678" elapsed="0.000502"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.561613" elapsed="0.000269"/>
+</kw>
+<msg time="2026-05-01T16:36:01.562040" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.561384" elapsed="0.000702"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.562501" elapsed="0.000051"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.562221" elapsed="0.000408"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.562191" elapsed="0.000503"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.563076" level="INFO">${final_arg1} = xpath://span[text()='Thông báo học phí']</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.562827" elapsed="0.000300"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.563537" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.563307" elapsed="0.000274"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.563963" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.563745" elapsed="0.000265"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.564448" elapsed="0.000239"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.564159" elapsed="0.000609"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.564130" elapsed="0.000701"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.565182" elapsed="0.000048"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.564918" elapsed="0.000386"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.564893" elapsed="0.000472"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:36:01.566991" level="INFO">Clicking element 'xpath://span[text()='Thông báo học phí']'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.566462" elapsed="0.110042"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.565621" elapsed="0.111043"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.677188" level="INFO">PASS: Click Element</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.676907" elapsed="0.000367"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.565466" elapsed="0.111889"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.677633" elapsed="0.000054"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.678052" elapsed="0.000084"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.678333" elapsed="0.000056"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.677456" elapsed="0.001013"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.565423" elapsed="0.113141"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:36:01.560769" elapsed="0.117922"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.559382" elapsed="0.119399"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.559352" elapsed="0.119501"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-01T16:36:01.557685" elapsed="0.121216"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.679702" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.679349" elapsed="0.000402"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.680277" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.679936" elapsed="0.000391"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.680847" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.680523" elapsed="0.000374"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.681325" elapsed="0.000500"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.684657" elapsed="0.000411"/>
+</kw>
+<msg time="2026-05-01T16:36:01.685325" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.684246" elapsed="0.001155"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.686230" elapsed="0.000094"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.685685" elapsed="0.000770"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.685625" elapsed="0.000943"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.687091" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.686771" elapsed="0.000370"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.687575" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.687308" elapsed="0.000317"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.688004" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.687796" elapsed="0.000256"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.688488" elapsed="0.000247"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.688183" elapsed="0.000636"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.688148" elapsed="0.000736"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.689269" elapsed="0.000283"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.688985" elapsed="0.000660"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.688953" elapsed="0.000761"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.690298" elapsed="0.041267"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.689988" elapsed="0.041737"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.732247" level="INFO">PASS: Wait Until Element Is Visible</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.731978" elapsed="0.000346"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.689832" elapsed="0.042567"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.732663" elapsed="0.000046"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.733187" elapsed="0.000095"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.733591" elapsed="0.000138"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.732495" elapsed="0.001379"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.689781" elapsed="0.044236"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:36:01.682443" elapsed="0.051895"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.681034" elapsed="0.053467"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.681003" elapsed="0.053629"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-01T16:36:01.679190" elapsed="0.055529"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.736133" level="INFO">${k} = Element Text Should Be</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.735513" elapsed="0.000707"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.736762" level="INFO">${a1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.736452" elapsed="0.000359"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.737294" level="INFO">${a2} = Thông báo học phí</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.736990" elapsed="0.000357"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.737841" elapsed="0.000539"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.739781" elapsed="0.000274"/>
+</kw>
+<msg time="2026-05-01T16:36:01.740216" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.739559" elapsed="0.000704"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.740697" elapsed="0.000050"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.740407" elapsed="0.000416"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.740373" elapsed="0.000513"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.741260" level="INFO">${final_arg1} = xpath://div[contains(@class, 'grid-md-9')]//h6//span</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.741016" elapsed="0.000294"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.741706" level="INFO">${final_arg2} = Thông báo học phí</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.741479" elapsed="0.000275"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.742179" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.741932" elapsed="0.000298"/>
+</kw>
+<if>
+<branch type="IF" condition="$final_arg1">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.742659" elapsed="0.000254"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.742370" elapsed="0.000627"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.742335" elapsed="0.000725"/>
+</if>
+<if>
+<branch type="IF" condition="$final_arg2">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.743421" elapsed="0.000239"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.743156" elapsed="0.000585"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.743127" elapsed="0.000678"/>
+</if>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Element Text Should Be" owner="SeleniumLibrary">
+<msg time="2026-05-01T16:36:01.744682" level="INFO">Verifying element 'xpath://div[contains(@class, 'grid-md-9')]//h6//span' contains exact text 'Thông báo học phí'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.744374" elapsed="0.033559"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.744076" elapsed="0.034026"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.778645" level="INFO">PASS: Element Text Should Be</msg>
+<arg>PASS: ${keyword}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.778345" elapsed="0.000389"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.743910" elapsed="0.034912"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.779103" elapsed="0.000077"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>FAIL: ${keyword} - Error: ${error}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.779348" elapsed="0.000046"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Step failed: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.779537" elapsed="0.000042"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.778923" elapsed="0.000720"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.743867" elapsed="0.035881"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-01T16:36:01.738958" elapsed="0.040876"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.737491" elapsed="0.042420"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.737456" elapsed="0.042515"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-01T16:36:01.735238" elapsed="0.044775"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.780749" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.780418" elapsed="0.000378"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.781334" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.780993" elapsed="0.000391"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-01T16:36:01.781888" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.781577" elapsed="0.000508"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-01T16:36:01.782757" elapsed="0.000061"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-01T16:36:01.783578" elapsed="0.000100"/>
+</kw>
+<status status="NOT RUN" start="2026-05-01T16:36:01.782383" elapsed="0.001410"/>
+</branch>
+<status status="PASS" start="2026-05-01T16:36:01.782331" elapsed="0.001551"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-01T16:36:01.780264" elapsed="0.003682"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="PASS" start="2026-05-01T16:36:01.083330" elapsed="0.700769"/>
+</for>
+<arg>Step1_Keyword=Click Element</arg>
+<arg>Step1_Arg1=xpath://span[text()='Thông báo nổi bật']</arg>
+<arg>Step1_Arg2=</arg>
+<arg>Step2_Keyword=Click Element</arg>
+<arg>Step2_Arg1=xpath://span[text()='Các quy định']</arg>
+<arg>Step2_Arg2=</arg>
+<arg>Step3_Keyword=Click Element</arg>
+<arg>Step3_Arg1=xpath://span[text()='Thông báo học phí']</arg>
+<arg>Step3_Arg2=</arg>
+<arg>Step4_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step4_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step4_Arg2=10s</arg>
+<arg>Step5_Keyword=Element Text Should Be</arg>
+<arg>Step5_Arg1=xpath://div[contains(@class, 'grid-md-9')]//h6//span</arg>
+<arg>Step5_Arg2=Thông báo học phí</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="PASS" start="2026-05-01T16:36:01.082159" elapsed="0.702335"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-01T16:36:01.786597" elapsed="2.161237"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:36:01.785906" elapsed="2.162397"/>
+</kw>
+<status status="PASS" start="2026-05-01T16:35:59.250203" elapsed="4.698438"/>
+</test>
+<status status="FAIL" start="2026-05-01T16:35:34.959789" elapsed="28.990948"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="3" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="NewsCategoryNavigation" id="s1" pass="3" fail="3" skip="0">NewsCategoryNavigation</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

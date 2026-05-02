@@ -12,12 +12,12 @@ app = Flask(__name__)
 
 # --- CẤU HÌNH ĐƯỜNG DẪN (Nên dùng đường dẫn tuyệt đối để tránh lỗi) ---
 SHARED_FOLDER = r"C:\n8n_robot_share"  # Thư mục n8n dùng để gửi file Excel qua
-FILE_NAME = "test.xlsx"             # Tên file Excel chứa kịch bản test
+FILE_NAME = "testqlda.xlsx"             # Tên file Excel chứa kịch bản test
 FILE_TO_PROCESS = os.path.join(SHARED_FOLDER, FILE_NAME)
 
 # Đường dẫn đến file .robot và thư mục lưu kết quả
 ROBOT_SCRIPT_PATH = r"E:\n8nRobot\automation\rf\tests\GenericEngine.robot" 
-RESULTS_DIR = r"E:\n8nRobot\automation\rf\results\qnu"
+RESULTS_DIR = r"E:\n8nRobot\automation\rf\results\b"
 TEMP_XML_DIR = os.path.join(RESULTS_DIR, "temp_xml") # Nơi chứa các file XML tạm thời của từng sheet
 
 # Tự động tạo thư mục nếu chưa tồn tại để tránh lỗi Permission/Not Found
@@ -81,7 +81,7 @@ def run_robot_trigger():
         
         rebot_cmd = [
             "rebot",
-            "-N", "QNU Automation Project", # Tên hiển thị lớn nhất trên báo cáo
+            "-N", "Automation Project", # Tên hiển thị lớn nhất trên báo cáo
             "-d", RESULTS_DIR,              # Thư mục xuất báo cáo cuối cùng
             "-o", "output.xml",              # File XML tổng hợp
             *output_files                   # Giải nén danh sách các file xml lẻ vào lệnh

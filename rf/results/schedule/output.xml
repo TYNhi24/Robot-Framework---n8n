@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2026-04-23T16:10:07.193160" rpa="false" schemaversion="5">
+<suite id="s1" name="Framework" source="E:\n8nRobot\automation\rf\tests\framework.robot">
+<status status="SKIP" start="2026-04-23T16:10:07.195806" elapsed="1.590193"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Framework" id="s1" pass="0" fail="0" skip="0">Framework</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

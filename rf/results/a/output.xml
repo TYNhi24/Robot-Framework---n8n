@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Rebot 7.3.2 (Python 3.14.0 on win32)" generated="2026-04-29T12:19:51.242408" rpa="false" schemaversion="5">
+<suite id="s1" name="QNU Automation Project">
+<suite id="s1-s1" name="Schedule" source="E:\n8nRobot\automation\rf\tests\GenericEngine.robot">
+<test id="s1-s1-t1" name="Thuc thi Kich Ban Kiem Thu ${TC_ID}" line="16">
+<status status="FAIL" start="2026-04-29T12:19:47.503076" elapsed="0.005425">Test cannot be empty.</status>
+</test>
+<status status="FAIL" start="2026-04-29T12:19:45.970493" elapsed="1.539735"/>
+</suite>
+<suite id="s1-s2" name="NewsSearch" source="E:\n8nRobot\automation\rf\tests\GenericEngine.robot">
+<test id="s1-s2-t1" name="Thuc thi Kich Ban Kiem Thu ${TC_ID}" line="16">
+<status status="FAIL" start="2026-04-29T12:19:50.222436" elapsed="0.002276">Test cannot be empty.</status>
+</test>
+<status status="FAIL" start="2026-04-29T12:19:48.627990" elapsed="1.598414"/>
+</suite>
+<status status="FAIL" elapsed="3.138149"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="QNU Automation Project" id="s1" pass="0" fail="2" skip="0">QNU Automation Project</stat>
+<stat name="Schedule" id="s1-s1" pass="0" fail="1" skip="0">QNU Automation Project.Schedule</stat>
+<stat name="NewsSearch" id="s1-s2" pass="0" fail="1" skip="0">QNU Automation Project.NewsSearch</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-04-29T12:19:47.491822" level="ERROR">[ DataDriver ] Error in robot file:
+  File "E:\n8nRobot\automation\rf\tests\GenericEngine.robot", line 0</msg>
+<msg time="2026-04-29T12:19:47.493596" level="ERROR">In source file:
+  File "C:\n8n_robot_share\testqlda.xlsx", line 0</msg>
+<msg time="2026-04-29T12:19:47.501634" level="ERROR">Calling method '_start_suite' of listener 'DataDriver' failed: ValueError: Worksheet named 'Schedule' not found</msg>
+<msg time="2026-04-29T12:19:50.211322" level="ERROR">[ DataDriver ] Error in robot file:
+  File "E:\n8nRobot\automation\rf\tests\GenericEngine.robot", line 0</msg>
+<msg time="2026-04-29T12:19:50.211784" level="ERROR">In source file:
+  File "C:\n8n_robot_share\testqlda.xlsx", line 0</msg>
+<msg time="2026-04-29T12:19:50.218212" level="ERROR">Calling method '_start_suite' of listener 'DataDriver' failed: ValueError: Worksheet named 'NewsSearch' not found</msg>
+</errors>
+</robot>

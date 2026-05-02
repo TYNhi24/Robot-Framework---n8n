@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2026-05-02T08:10:19.417207" rpa="false" schemaversion="5">
+<suite id="s1" name="StudentMarks" source="E:\n8nRobot\automation\rf\tests\GenericEngine.robot">
+<test id="s1-t1" name="Thuc thi Kich Ban Kiem Thu ${TC_ID}" line="18">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-02T08:10:21.266807" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-02T08:10:21.266448" elapsed="2.097701"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.364812" elapsed="0.129384"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.494642" elapsed="0.002443"/>
+</kw>
+<status status="PASS" start="2026-05-02T08:10:21.265358" elapsed="2.231991"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.501639" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.501003" elapsed="0.000738"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.502620" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.502077" elapsed="0.000618"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.503572" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.503010" elapsed="0.000646"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-02T08:10:23.504460" elapsed="0.000087"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-02T08:10:23.505340" elapsed="0.000098"/>
+</kw>
+<status status="NOT RUN" start="2026-05-02T08:10:23.503926" elapsed="0.001822"/>
+</branch>
+<status status="PASS" start="2026-05-02T08:10:23.503851" elapsed="0.002237"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-02T08:10:23.500670" elapsed="0.005532"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.507552" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.506989" elapsed="0.000655"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.508493" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.507934" elapsed="0.000639"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.509356" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.508860" elapsed="0.000574"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-02T08:10:23.510132" elapsed="0.000077"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-02T08:10:23.510916" elapsed="0.000089"/>
+</kw>
+<status status="NOT RUN" start="2026-05-02T08:10:23.509652" elapsed="0.001471"/>
+</branch>
+<status status="PASS" start="2026-05-02T08:10:23.509599" elapsed="0.001638"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-02T08:10:23.506714" elapsed="0.004590"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.512376" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.511890" elapsed="0.000587"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.513217" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.512748" elapsed="0.000545"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.514033" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.513571" elapsed="0.000537"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-02T08:10:23.514808" elapsed="0.000165"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-02T08:10:23.516335" elapsed="0.000142"/>
+</kw>
+<status status="NOT RUN" start="2026-05-02T08:10:23.514303" elapsed="0.002667"/>
+</branch>
+<status status="PASS" start="2026-05-02T08:10:23.514257" elapsed="0.002916"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-02T08:10:23.511649" elapsed="0.005613"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.518979" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.518118" elapsed="0.000966"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.520111" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.519466" elapsed="0.000739"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.521124" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.520566" elapsed="0.000646"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-02T08:10:23.522111" elapsed="0.000090"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-02T08:10:23.522993" elapsed="0.000096"/>
+</kw>
+<status status="NOT RUN" start="2026-05-02T08:10:23.521495" elapsed="0.001737"/>
+</branch>
+<status status="PASS" start="2026-05-02T08:10:23.521431" elapsed="0.001961"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-02T08:10:23.517764" elapsed="0.005708"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.526971" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.524307" elapsed="0.002795"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.528274" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.527560" elapsed="0.000813"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.529296" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.528706" elapsed="0.000683"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-02T08:10:23.530164" elapsed="0.000090"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-02T08:10:23.531517" elapsed="0.000155"/>
+</kw>
+<status status="NOT RUN" start="2026-05-02T08:10:23.529674" elapsed="0.002201"/>
+</branch>
+<status status="PASS" start="2026-05-02T08:10:23.529614" elapsed="0.002750"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-02T08:10:23.524009" elapsed="0.008937"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.536119" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.535223" elapsed="0.000997"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.537062" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.536557" elapsed="0.000582"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-02T08:10:23.537920" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.537416" elapsed="0.000582"/>
+</kw>
+<if>
+<branch type="IF" condition="$k">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n=== Step ${i}: ${k} ===</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-02T08:10:23.538766" elapsed="0.000090"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-02T08:10:23.539692" elapsed="0.000100"/>
+</kw>
+<status status="NOT RUN" start="2026-05-02T08:10:23.538220" elapsed="0.001784"/>
+</branch>
+<status status="PASS" start="2026-05-02T08:10:23.538165" elapsed="0.002055"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-02T08:10:23.534642" elapsed="0.005690"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>7</value>
+<status status="PASS" start="2026-05-02T08:10:23.499902" elapsed="0.041063"/>
+</for>
+<arg>Step1_Keyword=</arg>
+<arg>Step1_Arg1=</arg>
+<arg>Step1_Arg2=</arg>
+<arg>Step2_Keyword=</arg>
+<arg>Step2_Arg1=</arg>
+<arg>Step2_Arg2=</arg>
+<arg>Step3_Keyword=</arg>
+<arg>Step3_Arg1=</arg>
+<arg>Step3_Arg2=</arg>
+<arg>Step4_Keyword=</arg>
+<arg>Step4_Arg1=</arg>
+<arg>Step4_Arg2=</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<status status="PASS" start="2026-05-02T08:10:23.498486" elapsed="0.043073"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-02T08:10:23.545038" elapsed="2.505436"/>
+</kw>
+<status status="PASS" start="2026-05-02T08:10:23.544032" elapsed="2.506803"/>
+</kw>
+<status status="PASS" start="2026-05-02T08:10:21.261837" elapsed="4.789536"/>
+</test>
+<status status="PASS" start="2026-05-02T08:10:19.419829" elapsed="6.633236"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="StudentMarks" id="s1" pass="1" fail="0" skip="0">StudentMarks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
