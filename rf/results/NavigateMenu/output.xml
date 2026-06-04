@@ -1,0 +1,2667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.14.0 on win32)" generated="2026-05-09T08:56:56.495558" rpa="false" schemaversion="5">
+<suite id="s1" name="NavigateMenu" source="E:\n8nRobot\automation\rf\tests\GenericEngine.robot">
+<test id="s1-t1" name="TC_01_Điều_hướng_Tra_cứu_tuyển_sinh" line="19">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:56:57.793931" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-09T08:56:57.793578" elapsed="1.969554"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.763536" elapsed="0.210128"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.974196" elapsed="0.003052"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:56:57.792542" elapsed="2.185024"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.984495" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.983859" elapsed="0.000738"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.985529" level="INFO">${a1} = xpath=//a[contains(text(),'TRA CỨU TUYỂN SINH')]</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.984926" elapsed="0.000691"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.986540" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.985970" elapsed="0.000676"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.987563" elapsed="0.000755"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.991314" elapsed="0.000635"/>
+</kw>
+<msg time="2026-05-09T08:56:59.992229" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.990515" elapsed="0.001810"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:56:59.993861" elapsed="0.000099"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:56:59.992544" elapsed="0.001558"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:56:59.992466" elapsed="0.001955"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.995423" level="INFO">${final_arg1} = xpath=//a[contains(text(),'TRA CỨU TUYỂN SINH')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.994906" elapsed="0.000613"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.996251" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.995824" elapsed="0.000503"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.996922" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.996596" elapsed="0.000417"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:56:59.999124" level="INFO">${final_arg1} = xpath=//a[contains(text(),'TRA CỨU TUYỂN SINH')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.998725" elapsed="0.000481"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:56:59.999484" elapsed="0.001858"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:56:59.997259" elapsed="0.004488"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:56:59.997210" elapsed="0.004823"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.004413" level="INFO">${is_empty_val} = True</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.002973" elapsed="0.001586"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.006732" level="INFO">${need_second_arg} = False</msg>
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.005349" elapsed="0.001477"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.010631" elapsed="0.000108"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.007041" elapsed="0.003861"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.006998" elapsed="0.004021"/>
+</if>
+<status status="PASS" start="2026-05-09T08:57:00.004779" elapsed="0.006398"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.011555" elapsed="0.000094"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.011982" elapsed="0.003514"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.011284" elapsed="0.004567"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.004734" elapsed="0.011294"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.017398" level="INFO">THUC THI: Click Element | ARGS: ["xpath=//a[contains(text(),'TRA CỨU TUYỂN SINH')]"]</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.016691" elapsed="0.000892"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:00.022192" level="INFO">Clicking element 'xpath=//a[contains(text(),'TRA CỨU TUYỂN SINH')]'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.021073" elapsed="0.144184"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.020325" elapsed="0.145196"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.019827" elapsed="0.145858"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.166390" elapsed="0.000185"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.166931" elapsed="0.000125"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.165903" elapsed="0.001323"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.017975" elapsed="0.149446"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:56:59.989249" elapsed="0.178439"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:56:59.986909" elapsed="0.180971"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:56:59.986837" elapsed="0.181163"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-09T08:56:59.983333" elapsed="0.184806"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.170002" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.169318" elapsed="0.000773"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.170998" level="INFO">${a1} = xpath=//h5[contains(text(),'Hệ thống tra cứu kết quả trúng tuyển năm 2025')]</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.170443" elapsed="0.000668"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.172218" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.171526" elapsed="0.000784"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.173170" elapsed="0.001047"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.176893" elapsed="0.000729"/>
+</kw>
+<msg time="2026-05-09T08:57:00.177958" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.176460" elapsed="0.001624"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.178865" elapsed="0.000096"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.178353" elapsed="0.000741"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.178293" elapsed="0.000925"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.179937" level="INFO">${final_arg1} = xpath=//h5[contains(text(),'Hệ thống tra cứu kết quả trúng tuyển năm 2025')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.179488" elapsed="0.000535"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.180738" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.180309" elapsed="0.000508"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.181715" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.181248" elapsed="0.000549"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.185485" level="INFO">${final_arg1} = xpath=//h5[contains(text(),'Hệ thống tra cứu kết quả trúng tuyển năm 2025')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.185001" elapsed="0.000582"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.185894" elapsed="0.000411"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.182005" elapsed="0.004450"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.181957" elapsed="0.004642"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.187602" level="INFO">${is_empty_val} = False</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.186829" elapsed="0.000856"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.188428" elapsed="0.000118"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.189131" elapsed="0.000079"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.188796" elapsed="0.000530"/>
+</branch>
+<status status="NOT RUN" start="2026-05-09T08:57:00.188722" elapsed="0.000708"/>
+</if>
+<status status="NOT RUN" start="2026-05-09T08:57:00.187911" elapsed="0.001585"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.190315" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.189833" elapsed="0.000562"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.190776" elapsed="0.000775"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.189585" elapsed="0.002102"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.187860" elapsed="0.003931"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.193114" level="INFO">THUC THI: Wait Until Element Is Visible | ARGS: ["xpath=//h5[contains(text(),'Hệ thống tra cứu kết quả trúng tuyển năm 2025')]", '10s']</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.192223" elapsed="0.001066"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.194509" elapsed="0.168102"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.193986" elapsed="0.168942"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.193738" elapsed="0.169361"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.363720" elapsed="0.000099"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.364094" elapsed="0.000079"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.363327" elapsed="0.000963"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.193633" elapsed="0.170793"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:00.175357" elapsed="0.189221"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.172579" elapsed="0.192132"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.172527" elapsed="0.192290"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-09T08:57:00.168999" elapsed="0.195926"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.366248" level="INFO">${k} = Location Should Contain</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.365665" elapsed="0.000665"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.367131" level="INFO">${a1} = TraCuuThongTinTuyenSinh</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.366627" elapsed="0.000583"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.368139" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.367569" elapsed="0.000655"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.369042" elapsed="0.001404"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.372758" elapsed="0.001127"/>
+</kw>
+<msg time="2026-05-09T08:57:00.374210" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.372336" elapsed="0.001955"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.375243" elapsed="0.000129"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.374643" elapsed="0.000848"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.374565" elapsed="0.001060"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.376279" level="INFO">${final_arg1} = TraCuuThongTinTuyenSinh</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.375849" elapsed="0.000506"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.376986" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.376619" elapsed="0.000436"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.377675" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.377312" elapsed="0.000439"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.379793" level="INFO">${final_arg1} = TraCuuThongTinTuyenSinh</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.379329" elapsed="0.000542"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.380146" elapsed="0.000397"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.377948" elapsed="0.002723"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.377903" elapsed="0.002870"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.381799" level="INFO">${is_empty_val} = True</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.380986" elapsed="0.000895"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.383099" level="INFO">${need_second_arg} = False</msg>
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.382516" elapsed="0.000667"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.383841" elapsed="0.000077"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.383391" elapsed="0.000639"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.383347" elapsed="0.000846"/>
+</if>
+<status status="PASS" start="2026-05-09T08:57:00.382087" elapsed="0.002175"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.384590" elapsed="0.000070"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.384878" elapsed="0.000062"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.384353" elapsed="0.000686"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.382041" elapsed="0.003084"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.385717" level="INFO">THUC THI: Location Should Contain | ARGS: ['TraCuuThongTinTuyenSinh']</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.385312" elapsed="0.000521"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:00.397546" level="INFO">Current location contains 'TraCuuThongTinTuyenSinh'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.386731" elapsed="0.011093"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.386273" elapsed="0.011833"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.386051" elapsed="0.012204"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.398820" elapsed="0.000087"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.399162" elapsed="0.000074"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.398472" elapsed="0.000875"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.385972" elapsed="0.013537"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:00.371342" elapsed="0.028311"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.368457" elapsed="0.031326"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.368405" elapsed="0.031481"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-09T08:57:00.365372" elapsed="0.034578"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.401166" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.400623" elapsed="0.000616"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.402024" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.401545" elapsed="0.000549"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.402820" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.402365" elapsed="0.000524"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.403652" elapsed="0.000073"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:00.404523" elapsed="0.000096"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.403089" elapsed="0.001649"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.403043" elapsed="0.001795"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-09T08:57:00.400383" elapsed="0.004518"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.406324" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.405585" elapsed="0.000838"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.409242" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.406831" elapsed="0.002532"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.410427" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.409834" elapsed="0.000675"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.411275" elapsed="0.000075"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:00.412139" elapsed="0.000080"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.410724" elapsed="0.001619"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.410674" elapsed="0.001778"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-09T08:57:00.405247" elapsed="0.007267"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.413616" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.413072" elapsed="0.000622"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.414442" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.413975" elapsed="0.000540"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.415243" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.414773" elapsed="0.000537"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.416059" elapsed="0.000071"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:00.416846" elapsed="0.000076"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.415538" elapsed="0.001495"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.415466" elapsed="0.001724"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-09T08:57:00.412846" elapsed="0.004414"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.418363" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.417877" elapsed="0.000557"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.419157" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.418700" elapsed="0.000530"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.419979" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.419500" elapsed="0.000547"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.420720" elapsed="0.000069"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:00.421567" elapsed="0.000097"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.420246" elapsed="0.001537"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.420200" elapsed="0.001680"/>
+</if>
+<var name="${i}">7</var>
+<status status="PASS" start="2026-05-09T08:57:00.417639" elapsed="0.004309"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.423232" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.422677" elapsed="0.000664"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.425241" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.424416" elapsed="0.000990"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.426363" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.425824" elapsed="0.000621"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.427317" elapsed="0.000086"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:00.428262" elapsed="0.000101"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.426690" elapsed="0.001801"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.426637" elapsed="0.001958"/>
+</if>
+<var name="${i}">8</var>
+<status status="PASS" start="2026-05-09T08:57:00.422338" elapsed="0.006323"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.429781" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.429286" elapsed="0.000570"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.430626" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.430145" elapsed="0.000553"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:00.431497" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.431013" elapsed="0.000558"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:00.432285" elapsed="0.000072"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:00.433138" elapsed="0.000093"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:00.431779" elapsed="0.001572"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:00.431734" elapsed="0.001723"/>
+</if>
+<var name="${i}">9</var>
+<status status="PASS" start="2026-05-09T08:57:00.429041" elapsed="0.004480"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>10</value>
+<status status="PASS" start="2026-05-09T08:56:59.982286" elapsed="0.451353"/>
+</for>
+<arg>Step1_Keyword=Click Element</arg>
+<arg>Step1_Arg1=xpath=//a[contains(text(),'TRA CỨU TUYỂN SINH')]</arg>
+<arg>Step1_Arg2=</arg>
+<arg>Step2_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step2_Arg1=xpath=//h5[contains(text(),'Hệ thống tra cứu kết quả trúng tuyển năm 2025')]</arg>
+<arg>Step2_Arg2=10s</arg>
+<arg>Step3_Keyword=Location Should Contain</arg>
+<arg>Step3_Arg1=TraCuuThongTinTuyenSinh</arg>
+<arg>Step3_Arg2=</arg>
+<arg>Step4_Keyword=</arg>
+<arg>Step4_Arg1=</arg>
+<arg>Step4_Arg2=</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<arg>Step7_Keyword=</arg>
+<arg>Step7_Arg1=</arg>
+<arg>Step7_Arg2=</arg>
+<arg>Step8_Keyword=</arg>
+<arg>Step8_Arg1=</arg>
+<arg>Step8_Arg2=</arg>
+<arg>Step9_Keyword=</arg>
+<arg>Step9_Arg1=</arg>
+<arg>Step9_Arg2=</arg>
+<status status="PASS" start="2026-05-09T08:56:59.980201" elapsed="0.453661"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-09T08:57:00.435680" elapsed="2.396666"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:00.434969" elapsed="2.397694"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:56:57.788337" elapsed="5.045951"/>
+</test>
+<test id="s1-t2" name="TC_02_Điều_hướng_Thời_khóa_biểu_giảng_viên" line="19">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:02.840119" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-09T08:57:02.839684" elapsed="2.006308"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.846410" elapsed="0.095808"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.942649" elapsed="0.002551"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:02.839120" elapsed="2.106291"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.949365" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.948651" elapsed="0.000838"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.950354" level="INFO">${a1} = xpath=//a[contains(text(),'THỜI KHÓA BIỂU GIẢNG VIÊN')]</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.949809" elapsed="0.000633"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.951358" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.950758" elapsed="0.000713"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.952294" elapsed="0.000874"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.956860" elapsed="0.000509"/>
+</kw>
+<msg time="2026-05-09T08:57:04.957892" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.956414" elapsed="0.001568"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:04.958701" elapsed="0.000094"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:04.958243" elapsed="0.000665"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:04.958190" elapsed="0.000819"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.959750" level="INFO">${final_arg1} = xpath=//a[contains(text(),'THỜI KHÓA BIỂU GIẢNG VIÊN')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.959285" elapsed="0.000589"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.960538" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.960143" elapsed="0.000467"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.961214" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.960864" elapsed="0.000612"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.963698" level="INFO">${final_arg1} = xpath=//a[contains(text(),'THỜI KHÓA BIỂU GIẢNG VIÊN')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.963285" elapsed="0.000498"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.964092" elapsed="0.000377"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:04.961709" elapsed="0.002901"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:04.961634" elapsed="0.003088"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.967809" level="INFO">${is_empty_val} = True</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.964955" elapsed="0.002954"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.969234" level="INFO">${need_second_arg} = False</msg>
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.968596" elapsed="0.000764"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:04.970045" elapsed="0.000078"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:04.969619" elapsed="0.000612"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:04.969575" elapsed="0.000748"/>
+</if>
+<status status="PASS" start="2026-05-09T08:57:04.968164" elapsed="0.002222"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:04.970680" elapsed="0.000065"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:04.970960" elapsed="0.000064"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:04.970472" elapsed="0.000653"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:04.968115" elapsed="0.003095"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:04.972598" level="INFO">THUC THI: Click Element | ARGS: ["xpath=//a[contains(text(),'THỜI KHÓA BIỂU GIẢNG VIÊN')]"]</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.971785" elapsed="0.000979"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:04.974262" level="INFO">Clicking element 'xpath=//a[contains(text(),'THỜI KHÓA BIỂU GIẢNG VIÊN')]'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.973787" elapsed="0.110026"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:04.973283" elapsed="0.110760"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:04.973037" elapsed="0.111126"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.084658" elapsed="0.000067"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.084899" elapsed="0.000051"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.084411" elapsed="0.000665"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:04.972933" elapsed="0.112250"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:04.955064" elapsed="0.130223"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:04.951710" elapsed="0.133670"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:04.951658" elapsed="0.133795"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-09T08:57:04.948306" elapsed="0.137197"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.086569" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.086015" elapsed="0.000614"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.087217" level="INFO">${a1} = xpath=//h5[contains(text(),'Thời khóa biểu')]</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.086840" elapsed="0.000439"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.087852" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.087485" elapsed="0.000440"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.088940" elapsed="0.000607"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.091607" elapsed="0.000423"/>
+</kw>
+<msg time="2026-05-09T08:57:05.092268" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.091240" elapsed="0.001104"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.093069" elapsed="0.000079"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.092560" elapsed="0.000706"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.092508" elapsed="0.000860"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.094020" level="INFO">${final_arg1} = xpath=//h5[contains(text(),'Thời khóa biểu')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.093590" elapsed="0.000509"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.094698" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.094351" elapsed="0.000416"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.095316" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.095020" elapsed="0.000365"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.097245" level="INFO">${final_arg1} = xpath=//h5[contains(text(),'Thời khóa biểu')]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.096879" elapsed="0.000443"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.097568" elapsed="0.000380"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.095561" elapsed="0.002510"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.095521" elapsed="0.002658"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.099090" level="INFO">${is_empty_val} = False</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.098407" elapsed="0.000762"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.099752" elapsed="0.000070"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.100274" elapsed="0.000067"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.100042" elapsed="0.000419"/>
+</branch>
+<status status="NOT RUN" start="2026-05-09T08:57:05.100003" elapsed="0.000551"/>
+</if>
+<status status="NOT RUN" start="2026-05-09T08:57:05.099366" elapsed="0.001248"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.102326" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.100923" elapsed="0.001511"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.102730" elapsed="0.000414"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.100698" elapsed="0.002583"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.099323" elapsed="0.004052"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.104398" level="INFO">THUC THI: Wait Until Element Is Visible | ARGS: ["xpath=//h5[contains(text(),'Thời khóa biểu')]", '10s']</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.103826" elapsed="0.000762"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.105884" elapsed="0.130308"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.105311" elapsed="0.131112"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.104883" elapsed="0.131659"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.237074" elapsed="0.000078"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.237417" elapsed="0.000054"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.236706" elapsed="0.000872"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.104771" elapsed="0.132920"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:05.090303" elapsed="0.147523"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.088270" elapsed="0.149681"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.088196" elapsed="0.149852"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-09T08:57:05.085817" elapsed="0.152293"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.239161" level="INFO">${k} = Location Should Contain</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.238629" elapsed="0.000639"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.240035" level="INFO">${a1} = ThoiKhoaBieuGiangVien</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.239553" elapsed="0.000554"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.241010" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.240402" elapsed="0.000691"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.241975" elapsed="0.000690"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.245064" elapsed="0.000442"/>
+</kw>
+<msg time="2026-05-09T08:57:05.245792" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.244731" elapsed="0.001139"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.246674" elapsed="0.000108"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.246121" elapsed="0.000798"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.246069" elapsed="0.000994"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.247720" level="INFO">${final_arg1} = ThoiKhoaBieuGiangVien</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.247290" elapsed="0.000500"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.248525" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.248091" elapsed="0.000524"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.249233" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.248904" elapsed="0.000407"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.251497" level="INFO">${final_arg1} = ThoiKhoaBieuGiangVien</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.251061" elapsed="0.000514"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.251876" elapsed="0.000468"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.249533" elapsed="0.002946"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.249468" elapsed="0.003136"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.253670" level="INFO">${is_empty_val} = True</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.252862" elapsed="0.000903"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.254929" level="INFO">${need_second_arg} = False</msg>
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.254397" elapsed="0.000610"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.255637" elapsed="0.000079"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.255251" elapsed="0.000596"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.255210" elapsed="0.000742"/>
+</if>
+<status status="PASS" start="2026-05-09T08:57:05.253971" elapsed="0.002053"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.256450" elapsed="0.000075"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.256835" elapsed="0.000084"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.256125" elapsed="0.000913"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.253927" elapsed="0.003222"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.257929" level="INFO">THUC THI: Location Should Contain | ARGS: ['ThoiKhoaBieuGiangVien']</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.257405" elapsed="0.000660"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:05.267106" level="INFO">Current location contains 'ThoiKhoaBieuGiangVien'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.260168" elapsed="0.007199"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.259130" elapsed="0.008436"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.258364" elapsed="0.009317"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.268125" elapsed="0.000073"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.268462" elapsed="0.000068"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.267833" elapsed="0.000798"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.258282" elapsed="0.010462"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:05.243762" elapsed="0.025106"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.241415" elapsed="0.027564"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.241338" elapsed="0.027732"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-09T08:57:05.238415" elapsed="0.030725"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.270314" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.269762" elapsed="0.000633"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.271131" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.270669" elapsed="0.000529"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.272232" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.271464" elapsed="0.000910"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.274919" elapsed="0.000272"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:05.277195" elapsed="0.000222"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.272953" elapsed="0.004677"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.272864" elapsed="0.004929"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-09T08:57:05.269525" elapsed="0.008363"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.279463" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.278700" elapsed="0.000852"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.280419" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.279880" elapsed="0.000618"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.281320" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.280797" elapsed="0.000596"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.282499" elapsed="0.000090"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:05.283336" elapsed="0.000081"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.281594" elapsed="0.001939"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.281549" elapsed="0.002083"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-09T08:57:05.278361" elapsed="0.005337"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.284768" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.284278" elapsed="0.000562"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.285566" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.285101" elapsed="0.000545"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.286428" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.285955" elapsed="0.000544"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.287185" elapsed="0.000070"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:05.289711" elapsed="0.000246"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.286703" elapsed="0.003422"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.286657" elapsed="0.003581"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-09T08:57:05.284055" elapsed="0.006256"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.291735" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.291134" elapsed="0.000682"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.292737" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.292174" elapsed="0.000647"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.293710" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.293204" elapsed="0.000584"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.294622" elapsed="0.000071"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:05.295539" elapsed="0.000089"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.294024" elapsed="0.001718"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.293968" elapsed="0.001871"/>
+</if>
+<var name="${i}">7</var>
+<status status="PASS" start="2026-05-09T08:57:05.290743" elapsed="0.005170"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.297045" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.296541" elapsed="0.000641"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.297955" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.297466" elapsed="0.000560"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.298833" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.298312" elapsed="0.000610"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.299756" elapsed="0.000075"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:05.300592" elapsed="0.000088"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.299207" elapsed="0.001598"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.299126" elapsed="0.001780"/>
+</if>
+<var name="${i}">8</var>
+<status status="PASS" start="2026-05-09T08:57:05.296305" elapsed="0.004672"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.302130" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.301645" elapsed="0.000558"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.302939" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.302476" elapsed="0.000534"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:05.303796" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.303319" elapsed="0.000551"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:05.304610" elapsed="0.000076"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:05.306497" elapsed="0.000130"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:05.304084" elapsed="0.002697"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:05.304034" elapsed="0.002856"/>
+</if>
+<var name="${i}">9</var>
+<status status="PASS" start="2026-05-09T08:57:05.301352" elapsed="0.005619"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>10</value>
+<status status="PASS" start="2026-05-09T08:57:04.947577" elapsed="0.359535"/>
+</for>
+<arg>Step1_Keyword=Click Element</arg>
+<arg>Step1_Arg1=xpath=//a[contains(text(),'THỜI KHÓA BIỂU GIẢNG VIÊN')]</arg>
+<arg>Step1_Arg2=</arg>
+<arg>Step2_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step2_Arg1=xpath=//h5[contains(text(),'Thời khóa biểu')]</arg>
+<arg>Step2_Arg2=10s</arg>
+<arg>Step3_Keyword=Location Should Contain</arg>
+<arg>Step3_Arg1=ThoiKhoaBieuGiangVien</arg>
+<arg>Step3_Arg2=</arg>
+<arg>Step4_Keyword=</arg>
+<arg>Step4_Arg1=</arg>
+<arg>Step4_Arg2=</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<arg>Step7_Keyword=</arg>
+<arg>Step7_Arg1=</arg>
+<arg>Step7_Arg2=</arg>
+<arg>Step8_Keyword=</arg>
+<arg>Step8_Arg1=</arg>
+<arg>Step8_Arg2=</arg>
+<arg>Step9_Keyword=</arg>
+<arg>Step9_Arg1=</arg>
+<arg>Step9_Arg2=</arg>
+<status status="PASS" start="2026-05-09T08:57:04.946273" elapsed="0.361143"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-09T08:57:05.309538" elapsed="2.166074"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:05.308784" elapsed="2.167061"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:02.835890" elapsed="4.640389"/>
+</test>
+<test id="s1-t3" name="TC_03_Điều_hướng_Đăng_nhập" line="19">
+<kw name="Mo Trinh Duyet" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:07.480307" level="INFO">Opening browser 'chrome' to base url 'https://daotao.qnu.edu.vn'.</msg>
+<arg>${URL_QNU}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-05-09T08:57:07.479909" elapsed="1.943757"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.424068" elapsed="0.130344"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" owner="SeleniumLibrary">
+<arg>5s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.554752" elapsed="0.002394"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:07.479419" elapsed="2.077979"/>
+</kw>
+<kw name="Xu Ly Kich Ban Kiem Thu">
+<for flavor="IN RANGE">
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.562673" level="INFO">${k} = Click Element</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.560899" elapsed="0.001886"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.563843" level="INFO">${a1} = xpath=(//a[contains(text(),'Đăng nhập')])[2]</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.563263" elapsed="0.000669"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.566531" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.565524" elapsed="0.001099"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.567516" elapsed="0.001463"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.571897" elapsed="0.000534"/>
+</kw>
+<msg time="2026-05-09T08:57:09.572948" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.571424" elapsed="0.001617"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.577065" elapsed="0.000172"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.573345" elapsed="0.004393"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.573279" elapsed="0.004600"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.578820" level="INFO">${final_arg1} = xpath=(//a[contains(text(),'Đăng nhập')])[2]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.578151" elapsed="0.000794"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.579743" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.579314" elapsed="0.000511"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.580453" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.580112" elapsed="0.000422"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.583659" level="INFO">${final_arg1} = xpath=(//a[contains(text(),'Đăng nhập')])[2]</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.582975" elapsed="0.000814"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.584175" elapsed="0.000591"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.580779" elapsed="0.004176"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.580726" elapsed="0.004390"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.586555" level="INFO">${is_empty_val} = True</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.585452" elapsed="0.001205"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.588745" level="INFO">${need_second_arg} = False</msg>
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.587521" elapsed="0.001350"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.591435" elapsed="0.000267"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.589217" elapsed="0.002692"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.589146" elapsed="0.002902"/>
+</if>
+<status status="PASS" start="2026-05-09T08:57:09.586919" elapsed="0.005213"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.592619" elapsed="0.000098"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.593048" elapsed="0.000096"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.592231" elapsed="0.001039"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.586858" elapsed="0.006513"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.594278" level="INFO">THUC THI: Click Element | ARGS: ["xpath=(//a[contains(text(),'Đăng nhập')])[2]"]</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.593716" elapsed="0.000822"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:09.596323" level="INFO">Clicking element 'xpath=(//a[contains(text(),'Đăng nhập')])[2]'.</msg>
+<arg>@{args}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.595794" elapsed="0.229539"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.595089" elapsed="0.230495"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.594820" elapsed="0.230898"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.826222" elapsed="0.000126"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.826609" elapsed="0.000078"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.825895" elapsed="0.000900"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.594727" elapsed="0.232191"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:09.569853" elapsed="0.257203"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.566876" elapsed="0.260323"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.566816" elapsed="0.260510"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-05-09T08:57:09.560614" elapsed="0.266776"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.828486" level="INFO">${k} = Wait Until Element Is Visible</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.827991" elapsed="0.000613"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.829269" level="INFO">${a1} = name:email</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.828856" elapsed="0.000471"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.830189" level="INFO">${a2} = 10s</msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.829632" elapsed="0.000669"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.832583" elapsed="0.001380"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.836424" elapsed="0.000768"/>
+</kw>
+<msg time="2026-05-09T08:57:09.837468" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.836012" elapsed="0.001535"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.838557" elapsed="0.000076"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.838075" elapsed="0.000648"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.837729" elapsed="0.001062"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.839484" level="INFO">${final_arg1} = name:email</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.838973" elapsed="0.000591"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.840278" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.839907" elapsed="0.000445"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.841029" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.840659" elapsed="0.000451"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.843292" level="INFO">${final_arg1} = name:email</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.842876" elapsed="0.000475"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.843552" elapsed="0.000272"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.841325" elapsed="0.002640"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.841267" elapsed="0.002794"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.845223" level="INFO">${is_empty_val} = False</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.844344" elapsed="0.000964"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.846005" elapsed="0.000080"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.846519" elapsed="0.000073"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.846280" elapsed="0.000467"/>
+</branch>
+<status status="NOT RUN" start="2026-05-09T08:57:09.846238" elapsed="0.000605"/>
+</if>
+<status status="NOT RUN" start="2026-05-09T08:57:09.845571" elapsed="0.001340"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.847662" level="INFO">${final_arg2} = 10s</msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.847259" elapsed="0.000478"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.847983" elapsed="0.000369"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.847030" elapsed="0.001441"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.845516" elapsed="0.003047"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.849233" level="INFO">THUC THI: Wait Until Element Is Visible | ARGS: ['name:email', '10s']</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.848783" elapsed="0.000570"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>@{args}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.850223" elapsed="0.069848"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.849790" elapsed="0.070546"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.849578" elapsed="0.070900"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.921620" elapsed="0.000132"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.922091" elapsed="0.000095"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.920660" elapsed="0.001649"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.849507" elapsed="0.072936"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:09.835017" elapsed="0.087571"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.831528" elapsed="0.091206"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.831417" elapsed="0.091432"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-05-09T08:57:09.827746" elapsed="0.095176"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.924292" level="INFO">${k} = Location Should Contain</msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.923669" elapsed="0.000711"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.925442" level="INFO">${a1} = login</msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.924810" elapsed="0.000746"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.926640" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.926086" elapsed="0.000635"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.927590" elapsed="0.001385"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Keyword Should Exist" owner="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Fails unless the given keyword exists in the current scope.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.931481" elapsed="0.000459"/>
+</kw>
+<msg time="2026-05-09T08:57:09.932214" level="INFO">${exists} = True</msg>
+<var>${exists}</var>
+<arg>Keyword Should Exist</arg>
+<arg>${keyword}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.931096" elapsed="0.001228"/>
+</kw>
+<if>
+<branch type="IF" condition="not ${exists}">
+<kw name="Fail" owner="BuiltIn">
+<arg>Keyword không tồn tại: ${keyword}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.934940" elapsed="0.000147"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.932580" elapsed="0.002660"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.932520" elapsed="0.002847"/>
+</if>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.936256" level="INFO">${final_arg1} = login</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.935668" elapsed="0.000676"/>
+</kw>
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.937090" level="INFO">${final_arg2} = </msg>
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.936648" elapsed="0.000523"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.938334" level="INFO">@{args} = [ ]</msg>
+<var>@{args}</var>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.937466" elapsed="0.000980"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${arg1}&quot; != &quot;None&quot; and &quot;${arg1}&quot; != &quot;nan&quot; and &quot;${arg1}&quot; != &quot;${EMPTY}&quot;">
+<kw name="Replace Variables" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.943850" level="INFO">${final_arg1} = login</msg>
+<var>${final_arg1}</var>
+<arg>${arg1}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.943357" elapsed="0.000577"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg1}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.944279" elapsed="0.000411"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.938752" elapsed="0.006079"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.938657" elapsed="0.006384"/>
+</if>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.946159" level="INFO">${is_empty_val} = True</msg>
+<var>${is_empty_val}</var>
+<arg>$arg2 is None or str($arg2).lower() == 'nan' or str($arg2) == ''</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.945310" elapsed="0.000939"/>
+</kw>
+<if>
+<branch type="IF" condition="$is_empty_val">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.947643" level="INFO">${need_second_arg} = False</msg>
+<var>${need_second_arg}</var>
+<arg>$keyword in ['Input Text', 'Textfield Value Should Be', 'Element Text Should Be']</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.946996" elapsed="0.000745"/>
+</kw>
+<if>
+<branch type="IF" condition="$need_second_arg">
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${EMPTY}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.948432" elapsed="0.000082"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.947976" elapsed="0.000680"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.947926" elapsed="0.000833"/>
+</if>
+<status status="PASS" start="2026-05-09T08:57:09.946513" elapsed="0.002320"/>
+</branch>
+<branch type="ELSE">
+<kw name="Replace Variables" owner="BuiltIn">
+<var>${final_arg2}</var>
+<arg>${arg2}</arg>
+<doc>Replaces variables in the given text with their current values.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.949242" elapsed="0.000096"/>
+</kw>
+<kw name="Append To List" owner="Collections">
+<arg>${args}</arg>
+<arg>${final_arg2}</arg>
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.949603" elapsed="0.000077"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.948941" elapsed="0.000851"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.946460" elapsed="0.003420"/>
+</if>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.950564" level="INFO">THUC THI: Location Should Contain | ARGS: ['login']</msg>
+<arg>THUC THI: ${keyword} | ARGS: ${args}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.950085" elapsed="0.000609"/>
+</kw>
+<try>
+<branch type="TRY">
+<kw name="Run Keyword" owner="BuiltIn">
+<kw name="Location Should Contain" owner="SeleniumLibrary">
+<msg time="2026-05-09T08:57:09.961911" level="INFO">Current location contains 'login'.</msg>
+<arg>@{args}</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.952843" elapsed="0.009307"/>
+</kw>
+<arg>${keyword}</arg>
+<arg>@{args}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.952247" elapsed="0.010231"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.950920" elapsed="0.011732"/>
+</branch>
+<branch type="EXCEPT" assign="${error}">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<arg>filename=${TEST NAME}_failed_at_${keyword}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.963210" elapsed="0.000092"/>
+</kw>
+<kw name="Fail" owner="BuiltIn">
+<arg>Dừng tại bước: ${keyword} do lỗi: ${error}</arg>
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.963561" elapsed="0.000075"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.962834" elapsed="0.000918"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.950847" elapsed="0.013027"/>
+</try>
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="PASS" start="2026-05-09T08:57:09.930030" elapsed="0.033975"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:09.926962" elapsed="0.037165"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.926907" elapsed="0.037320"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-05-09T08:57:09.923400" elapsed="0.040893"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.965698" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.965064" elapsed="0.000715"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.967089" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.966175" elapsed="0.001020"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.968254" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.967604" elapsed="0.000838"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.969292" elapsed="0.000084"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:09.970219" elapsed="0.000100"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.968706" elapsed="0.001833"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.968649" elapsed="0.002005"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-05-09T08:57:09.964779" elapsed="0.005960"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.972205" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.971648" elapsed="0.000637"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.973266" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.972670" elapsed="0.000677"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.974150" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.973645" elapsed="0.000582"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.975111" elapsed="0.000082"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:09.976005" elapsed="0.000092"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.974488" elapsed="0.001735"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.974431" elapsed="0.001915"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-05-09T08:57:09.971345" elapsed="0.005139"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.977560" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.977064" elapsed="0.000576"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.978644" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.977957" elapsed="0.000787"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.979634" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.979080" elapsed="0.000659"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.980619" elapsed="0.000138"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:09.981866" elapsed="0.000112"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.979985" elapsed="0.002128"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.979931" elapsed="0.002290"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-05-09T08:57:09.976831" elapsed="0.005460"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.983606" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.982999" elapsed="0.000693"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.984542" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.983999" elapsed="0.000629"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.985482" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.984929" elapsed="0.000631"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.986341" elapsed="0.000072"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:09.987258" elapsed="0.000108"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.985803" elapsed="0.002793"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.985750" elapsed="0.003066"/>
+</if>
+<var name="${i}">7</var>
+<status status="PASS" start="2026-05-09T08:57:09.982725" elapsed="0.006196"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.990921" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.989954" elapsed="0.001090"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.992028" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.991399" elapsed="0.000731"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.993054" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.992487" elapsed="0.000700"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.994078" elapsed="0.000085"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:09.995281" elapsed="0.000122"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.993456" elapsed="0.002108"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.993391" elapsed="0.002300"/>
+</if>
+<var name="${i}">8</var>
+<status status="PASS" start="2026-05-09T08:57:09.989568" elapsed="0.006202"/>
+</iter>
+<iter>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.997118" level="INFO">${k} = </msg>
+<var>${k}</var>
+<arg>\${Step${i}_Keyword}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.996431" elapsed="0.000791"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.998021" level="INFO">${a1} = </msg>
+<var>${a1}</var>
+<arg>\${Step${i}_Arg1}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.997526" elapsed="0.000585"/>
+</kw>
+<kw name="Get Variable Value" owner="BuiltIn">
+<msg time="2026-05-09T08:57:09.999058" level="INFO">${a2} = </msg>
+<var>${a2}</var>
+<arg>\${Step${i}_Arg2}</arg>
+<doc>Returns variable value or ``default`` if the variable does not exist.</doc>
+<status status="PASS" start="2026-05-09T08:57:09.998441" elapsed="0.000705"/>
+</kw>
+<if>
+<branch type="IF" condition="$k != &quot;&quot; and $k is not None">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>\n--- Buoc ${i}: ${k} ---</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" start="2026-05-09T08:57:09.999998" elapsed="0.000083"/>
+</kw>
+<kw name="Thuc Thi Buoc Kiem Thu">
+<arg>${k}</arg>
+<arg>${a1}</arg>
+<arg>${a2}</arg>
+<status status="NOT RUN" start="2026-05-09T08:57:10.001376" elapsed="0.000116"/>
+</kw>
+<status status="NOT RUN" start="2026-05-09T08:57:09.999407" elapsed="0.002251"/>
+</branch>
+<status status="PASS" start="2026-05-09T08:57:09.999346" elapsed="0.002442"/>
+</if>
+<var name="${i}">9</var>
+<status status="PASS" start="2026-05-09T08:57:09.996162" elapsed="0.005707"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>10</value>
+<status status="PASS" start="2026-05-09T08:57:09.560033" elapsed="0.441982"/>
+</for>
+<arg>Step1_Keyword=Click Element</arg>
+<arg>Step1_Arg1=xpath=(//a[contains(text(),'Đăng nhập')])[2]</arg>
+<arg>Step1_Arg2=</arg>
+<arg>Step2_Keyword=Wait Until Element Is Visible</arg>
+<arg>Step2_Arg1=name:email</arg>
+<arg>Step2_Arg2=10s</arg>
+<arg>Step3_Keyword=Location Should Contain</arg>
+<arg>Step3_Arg1=login</arg>
+<arg>Step3_Arg2=</arg>
+<arg>Step4_Keyword=</arg>
+<arg>Step4_Arg1=</arg>
+<arg>Step4_Arg2=</arg>
+<arg>Step5_Keyword=</arg>
+<arg>Step5_Arg1=</arg>
+<arg>Step5_Arg2=</arg>
+<arg>Step6_Keyword=</arg>
+<arg>Step6_Arg1=</arg>
+<arg>Step6_Arg2=</arg>
+<arg>Step7_Keyword=</arg>
+<arg>Step7_Arg1=</arg>
+<arg>Step7_Arg2=</arg>
+<arg>Step8_Keyword=</arg>
+<arg>Step8_Arg1=</arg>
+<arg>Step8_Arg2=</arg>
+<arg>Step9_Keyword=</arg>
+<arg>Step9_Arg1=</arg>
+<arg>Step9_Arg2=</arg>
+<status status="PASS" start="2026-05-09T08:57:09.558308" elapsed="0.443939"/>
+</kw>
+<kw name="Dong Trinh Duyet" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-05-09T08:57:10.005092" elapsed="2.321202"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:10.004262" elapsed="2.322306"/>
+</kw>
+<status status="PASS" start="2026-05-09T08:57:07.477209" elapsed="4.850458"/>
+</test>
+<status status="PASS" start="2026-05-09T08:56:56.497399" elapsed="15.832368"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="NavigateMenu" id="s1" pass="3" fail="0" skip="0">NavigateMenu</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

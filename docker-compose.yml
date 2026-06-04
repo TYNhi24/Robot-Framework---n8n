@@ -10,7 +10,6 @@ services:
       - N8N_PORT=5678
       - N8N_PROTOCOL=http
       - TZ=Asia/Ho_Chi_Minh
-      # Vẫn cần cờ này để bật node ghi file
       - N8N_DISABLE_FILE_SYSTEM_ACCESS=false
     volumes:
       - ./n8n_data:/home/node/.n8n
