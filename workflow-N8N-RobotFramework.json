@@ -1,0 +1,534 @@
+{
+  "name": "last workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "modelName": "models/gemini-3-flash-lite",
+        "options": {
+          "maxOutputTokens": 8192,
+          "temperature": 0.1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [640, 144],
+      "id": "dea6b794-19a5-4fbf-8d26-8804a957c7f2",
+      "name": "Call API from LLM - Google Gemini",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "4U6CREyFbEjcBjqb",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "notes": "Sau khi phân tích, hãy trả về kết quả duy nhất dưới dạng JSON thuần (không kèm lời giải thích) theo cấu trúc: [ { \"key\": \"value\" }, ... ]"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 208,
+        "width": 704,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [1168, -112],
+      "typeVersion": 1,
+      "id": "dd73a2db-719f-4ba2-8842-cf4018cc938f",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "formTitle": "Ứng dụng AI vào kiểm thử tự động bằng Robot Framework",
+        "formDescription": "Vui lòng upload file .xlsx để AI tự động tạo kịch bản Robot Framework",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "input_file",
+              "fieldType": "file",
+              "multipleFiles": false,
+              "acceptFileTypes": ".xlsx, .xls",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [128, -64],
+      "id": "52903c93-ad83-4222-b850-e746509bd317",
+      "name": "Receive Request",
+      "webhookId": "0e80bdfa-89f0-487b-a91c-2badd8e043d0"
+    },
+    {
+      "parameters": {
+        "operation": "xlsx",
+        "binaryPropertyName": "input_file",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [288, -64],
+      "id": "43ec4b89-af88-4ddb-b4da-1175134ac56a",
+      "name": "Feature Iterator"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [480, -64],
+      "id": "d1364e68-b802-47f1-9d98-f6a270a75dfe",
+      "name": "Extract Context"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=DỮ LIỆU CẦN XỬ LÝ:\n---\n{{ $node[\"Extract Context\"].json[\"PromptRequirement\"] }}\n---\n\nYÊU CẦU:\nBạn là một công cụ chuyển đổi dữ liệu chính xác. Hãy phân tích nội dung Robot Framework ở trên và chuyển đổi thành định dạng mảng JSON.\n\nQUY TẮC ĐẦU RA (BẮT BUỘC):\n1. CHỈ trả về mã JSON Array thuần. KHÔNG giải thích, KHÔNG dùng thẻ Markdown (không có ```json).\n2. Tên Key PHẢI giữ nguyên ký hiệu ${} như trong sheet mẫu. Ví dụ: Dùng \"${Step1_Keyword}\" chứ KHÔNG dùng \"Step1_Keyword\".\n3. Đảm bảo cấu trúc đồng nhất cho mọi object.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "Bạn là chuyên gia QA Robot Framework chuyển đổi mô tả test case thành JSON đúng cấu trúc.\n\nNHIỆM VỤ:\nTừ PromptRequirement được cung cấp, sinh ra mảng JSON chứa các test case bao phủ Happy Path, Negative, Boundary.\n\nQUY TẮC CHUNG:\n1. KHÔNG dùng Open Browser / Close Browser / Maximize Browser Window\n2. CHỈ dùng SeleniumLibrary keywords\n3. Mỗi test case phải có bước kiểm tra (assertion) cuối cùng\n4. Tên test case: TC_{STT}_{mô_tả_tiếng_Việt_có_dấu}. STT 2 chữ số (01, 02...)\n\nCẤU TRÚC ĐẦU RA JSON (BẮT BUỘC):\n- Trả về mảng JSON thuần (KHÔNG markdown, KHÔNG ```json)\n- Mỗi object có ĐÚNG 28 keys: \"*** Test Cases ***\", \"${Step1_Keyword}\", \"${Step1_Arg1}\", \"${Step1_Arg2}\", ... đến \"${Step9_Arg2}\"\n- Nếu số bước < 9: các key thừa gán giá trị \"\"\n\nQUY TẮC VỀ ARGUMENT (RẤT QUAN TRỌNG):\n- \"Page Should Contain\": CHỈ có 1 argument. Arg1 = text cần kiểm tra, Arg2 = \"\" (rỗng)\n- \"Wait Until Element Is Visible\": Arg2 bắt buộc là \"10s\" hoặc \"15s\"\n- \"Wait Until Page Contains\": Arg2 bắt buộc là \"10s\" hoặc \"15s\"\n- \"Element Should Contain\": Arg1 = locator, Arg2 = text\n- \"Input Text\": nếu giá trị rỗng → Arg2 = \"\" (hai dấu ngoặc kép)\n- \"Press Keys\": Arg2 = \"ENTER\"\n- Click Element: Arg2 = \"\" (luôn rỗng)\n\nQUY TẮC VỀ DROPDOWN (nếu có):\n1. Click Element vào dropdown (locator)\n2. Click Element vào xpath=//li[.='Giá trị']\n3. Có thể cần Wait theo yêu cầu của feature\n\nQUY TẮC VỀ BIẾN:\n- Dùng ${TEN_BIEN} (ví dụ ${LNK_TKB_GV})\n- CẤM dùng $[BIEN], $(BIEN), $BIEN\n\nTRƯỜNG HỢP ĐẶC BIỆT (Login QNU):\n- Keyword \"Login QNU\": Arg1 = \"\", Arg2 = \"\" (không nhận tham số)\n\nTIẾT KIỆM TOKEN:\n- Xuống dòng mỗi step\n- Không comment, không giải thích"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [640, 0],
+      "id": "1ddc441f-4fcd-46d2-9901-2dbc874a27cf",
+      "name": "AI Test Designer"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nif (!items?.length) return [];\n\nconst first = items[0];\n// Lấy dữ liệu từ output của AI (tùy theo node AI trả về field nào)\nlet text = first.json.output || first.json.text || first.json.message?.content || '';\n\n// 1. Loại bỏ các ký tự nhiễu như dấu nháy ngược ```json hoặc ``` nếu có\ntext = text.replace(/```json/gi, '').replace(/```/g, '').trim();\n\nlet data;\ntry {\n    // 2. Thử parse trực tiếp\n    data = JSON.parse(text);\n} catch (e) {\n    // 3. Nếu lỗi (do AI viết thêm lời dẫn), dùng Regex để trích xuất mảng [ ... ]\n    const arrayMatch = text.match(/\\[\\s*\\{[\\s\\S]*\\}\\s*\\]/);\n    if (arrayMatch) {\n        try {\n            data = JSON.parse(arrayMatch[0]);\n        } catch (eInner) {\n            return [{ json: { error: \"JSON hỏng cấu trúc bên trong\", detail: eInner.message, raw_text: text } }];\n        }\n    } else {\n        return [{ json: { error: \"Không tìm thấy định dạng mảng JSON [ ]\", raw_text: text } }];\n    }\n}\n\n// Đảm bảo data luôn là một mảng\nif (!Array.isArray(data)) data = [data];\n\nconst s = (v) => (v === null || v === undefined) ? '' : String(v);\n\n// 4. Chuyển đổi dữ liệu để mỗi Test Case là một Item riêng biệt trong n8n\nreturn data.map((tc) => {\n    let row = {};\n    Object.keys(tc).forEach(key => {\n        // Làm sạch key (xóa khoảng trắng thừa) và gán giá trị\n        const cleanKey = key.trim();\n        row[cleanKey] = s(tc[key]);\n    });\n    return { json: row };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [912, 96],
+      "id": "c71cf268-51c0-4c4b-9178-81ee7c083754",
+      "name": "Data Parser",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "retryOnFail": false
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "1SYaPTF8V8thHots7wJXlRcWCa48NIGiYAg1adFZmF6Y",
+          "mode": "id"
+        },
+        "options": {
+          "binaryPropertyName": "data",
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+              "drawingsToFormat": "image/png",
+              "sheetsToFormat": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [1376, -80],
+      "id": "8a32a222-e227-432e-8ba3-d71e8ebffc7f",
+      "name": "Fetch Test File",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "NztHANMYpK2Jp3CW",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=/robot_data/{{ $binary.data.fileName }}.{{ $binary.data.fileExtension }}",
+        "dataPropertyName": "=data",
+        "options": {
+          "append": false
+        }
+      },
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [1536, -80],
+      "id": "76f45e04-4612-4c19-bf96-a9a2b7fc0b71",
+      "name": "Local Storage"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:5000/run-robot",
+        "options": {
+          "timeout": 700000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1696, -80],
+      "id": "7ef2b112-c752-4ab9-a75a-5ca33d2a40d6",
+      "name": "Trigger Robot Framework"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 192,
+        "width": 528
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [96, -112],
+      "typeVersion": 1,
+      "id": "4391c161-8a4e-4ba0-86d1-bcb63e8001b7",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1SYaPTF8V8thHots7wJXlRcWCa48NIGiYAg1adFZmF6Y",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "={{ $node[\"Extract Context\"].json[\"FeatureName\"] }}",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "*** Test Cases ***",
+              "displayName": "*** Test Cases ***",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step1_Keyword}",
+              "displayName": "${Step1_Keyword}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step1_Arg1}",
+              "displayName": "${Step1_Arg1}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step1_Arg2}",
+              "displayName": "${Step1_Arg2}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step2_Keyword}",
+              "displayName": "${Step2_Keyword}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step2_Arg1}",
+              "displayName": "${Step2_Arg1}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step2_Arg2}",
+              "displayName": "${Step2_Arg2}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step3_Keyword}",
+              "displayName": "${Step3_Keyword}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step3_Arg1}",
+              "displayName": "${Step3_Arg1}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step3_Arg2}",
+              "displayName": "${Step3_Arg2}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step4_Keyword}",
+              "displayName": "${Step4_Keyword}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step4_Arg1}",
+              "displayName": "${Step4_Arg1}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step4_Arg2}",
+              "displayName": "${Step4_Arg2}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step5_Keyword}",
+              "displayName": "${Step5_Keyword}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step5_Arg1}",
+              "displayName": "${Step5_Arg1}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step5_Arg2}",
+              "displayName": "${Step5_Arg2}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step6_Keyword}",
+              "displayName": "${Step6_Keyword}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step6_Arg1}",
+              "displayName": "${Step6_Arg1}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "${Step6_Arg2}",
+              "displayName": "${Step6_Arg2}",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [1056, 96],
+      "id": "99002898-888b-478d-8c90-e2c0b2c1a023",
+      "name": "Append Test Cases to Sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "tX1ASv4p6to99VAS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Giữ lại đúng 1 item (item đầu tiên)\nreturn [$input.all()[0]];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1216, -80],
+      "id": "6da6c062-532e-4ec8-a439-ce0baa74f86a",
+      "name": "Prepare Data for File Download"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Call API from LLM - Google Gemini": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Test Designer",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Receive Request": {
+      "main": [
+        [
+          {
+            "node": "Feature Iterator",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Feature Iterator": {
+      "main": [
+        [
+          {
+            "node": "Extract Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Context": {
+      "main": [
+        [
+          {
+            "node": "Prepare Data for File Download",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Test Designer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Test Designer": {
+      "main": [
+        [
+          {
+            "node": "Data Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Data Parser": {
+      "main": [
+        [
+          {
+            "node": "Append Test Cases to Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Test File": {
+      "main": [
+        [
+          {
+            "node": "Local Storage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Local Storage": {
+      "main": [
+        [
+          {
+            "node": "Trigger Robot Framework",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append Test Cases to Sheet": {
+      "main": [
+        [
+          {
+            "node": "Extract Context",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Data for File Download": {
+      "main": [
+        [
+          {
+            "node": "Fetch Test File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d6be0ccd-6414-4f73-bcf2-f978a2249018",
+  "meta": {
+    "instanceId": "60a140b3085315e3083d1414ac089d70861d8f18d5eeecdca43bf4357e8a61bd"
+  },
+  "id": "2NBWQ2J7eBYPNfJO",
+  "tags": []
+}
